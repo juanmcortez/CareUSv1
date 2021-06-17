@@ -4,7 +4,7 @@
     <i :class="(open === 'false') ? 'fa-angle-left mr-1' : 'fa-angle-right'" class="text-2xl fa "></i>
 </button>
 
-<div :class="(open === 'false') ? 'hidden' : ''"
+<div :class="(open === 'false') ? 'md:hidden' : ''"
     class="z-0 flex flex-col items-start justify-between w-full min-h-full md:absolute">
     <div class="flex flex-row flex-grow w-full md:flex-col">
 

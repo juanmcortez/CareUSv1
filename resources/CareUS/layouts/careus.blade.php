@@ -45,7 +45,7 @@
         </div>
 
         {{-- SIDEBAR --}}
-        <div :class="(open === 'false') ? 'w-5' : 'w-full md:3/12 lg:w-2/12'"
+        <div :class="(open === 'false') ? 'w-full md:w-5' : 'w-full md:3/12 lg:w-2/12'"
             class="flex md:border-l md:relative md:flex-grow bg-secondary-900 text-brand-100">
 
             @include('layouts.parts.sidebar')
