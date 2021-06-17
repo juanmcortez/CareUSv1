@@ -16,6 +16,7 @@
                 <li>HEADER ITEM</li>
                 <li>HEADER ITEM</li>
             </ul>
+            {{ $header }}
         </nav>
     </div>
     <nav class="flex flex-row items-center justify-center w-full border-t">
@@ -35,5 +36,6 @@
             <li>SUBHEADER ITEM</li>
             <li>SUBHEADER ITEM</li>
         </ul>
+        {{ $subheader }}
     </nav>
 </header>
