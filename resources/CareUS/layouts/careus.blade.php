@@ -21,6 +21,20 @@
 
 </head>
 
+@guest
+
+<body class="overflow-x-hidden text-xs antialiased lg:text-sm xl:text-base text-dark-700">
+
+    <main class="flex flex-col items-center justify-center w-full min-h-screen md:flex-row flex-nowrap">
+        {{ $slot }}
+    </main>
+
+</body>
+
+@endguest
+
+@auth
+
 <body class="overflow-x-hidden text-xs antialiased lg:text-sm xl:text-base text-dark-700"
     x-data="{ open: localStorage.getItem('sidebar_status') }"
     x-init="$watch('open', (value) => localStorage.setItem('sidebar_status', value))">
@@ -63,5 +77,7 @@
     @stack('scripts')
 
 </body>
+
+@endauth
 
 </html>
