@@ -70,3 +70,6 @@ public/*
 /public/css
 /public/js
 database/test.sqlite
+public/mix-manifest.json
+public/css/careus.css
+public/css/theme.css
