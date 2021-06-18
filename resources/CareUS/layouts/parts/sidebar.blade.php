@@ -5,20 +5,23 @@
 </button>
 
 <div :class="(open === 'false') ? 'md:hidden' : ''"
-    class="z-0 flex flex-col items-start justify-between w-full min-h-full md:absolute">
-    <div class="flex flex-row flex-grow w-full md:flex-col">
+    class="z-0 flex flex-row items-start justify-between w-full min-h-full md:flex-col md:absolute">
+    <div class="flex flex-row flex-grow w-2/3 md:w-full md:flex-col">
 
-        <header class="flex items-center justify-center w-1/3 border-t md:border-t-0 border-secondary-800 md:w-full">
+        <header
+            class="items-center justify-center hidden w-full py-6 border-t md:flex md:border-t-0 border-secondary-800">
             SIDEBAR HEADER
         </header>
 
-        <main class="flex items-center justify-center w-2/3 border-t border-secondary-800 md:flex-grow md:w-full">
+        <main
+            class="flex items-center justify-start w-full px-6 py-6 border-t md:px-0 md:items-start md:justify-center border-secondary-800 md:flex-grow">
             SIDEBAR CONTENT
         </main>
 
     </div>
 
-    <footer class="items-center justify-center hidden w-full border-t border-secondary-800 md:flex">
+    <footer
+        class="flex items-center justify-end w-1/3 px-6 py-6 border-t md:px-0 md:justify-center md:w-full border-secondary-800">
         SIDEBAR FOOTER
     </footer>
 

@@ -35,11 +35,11 @@
 
 @auth
 
-<body class="overflow-x-hidden text-xs antialiased lg:text-sm xl:text-base text-dark-700"
-    x-data="{ open: localStorage.getItem('sidebar_status') }"
-    x-init="$watch('open', (value) => localStorage.setItem('sidebar_status', value))">
+<body class="overflow-x-hidden text-xs antialiased lg:text-sm xl:text-base text-dark-700">
 
-    <div class="flex flex-col w-full min-h-screen md:flex-row flex-nowrap">
+    <div class="flex flex-col w-full min-h-screen md:flex-row flex-nowrap"
+        x-data="{ open: localStorage.getItem('sidebar_status') }"
+        x-init="$watch('open', (value) => localStorage.setItem('sidebar_status', value))">
 
         <div :class="(open === 'false') ? 'w-full' : 'w-full md:w-9/12 xl:w-10/12'" class="flex">
             <div class="flex flex-col items-start justify-between w-full">
@@ -47,7 +47,7 @@
 
                     @include('layouts.parts.header')
 
-                    <main class="w-full">
+                    <main class="w-full border-t border-dark-50">
                         {{ $slot }}
                     </main>
 
