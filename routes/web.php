@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +28,7 @@ Route::middleware(['auth'])->group(function () {
 
     /* ***** User routes ***** */
     Route::prefix('users')->name('users.')->group(function () {
-        Route::get('profile', function () {
-            return view('pages.users.profile');
-        })->name('profile');
+        Route::get('profile', [UserController::class, 'index'])->name('profile');
     });
 
 
