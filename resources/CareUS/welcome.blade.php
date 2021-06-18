@@ -1,5 +1,4 @@
 <x-careus-layout>
-    <x-slot name="header"></x-slot>
 
     <x-slot name="subheader">
         <h2
@@ -7,8 +6,8 @@
             {{ __('Welcome') }}
         </h2>
         <div
-            class="flex flex-col items-start justify-center order-1 w-full md:px-6 md:w-1/2 md:justify-center md:items-center md:flex-row md:order-2">
-            <ul class="flex flex-row items-center justify-around w-full md:items-end">
+            class="flex flex-col items-start justify-center order-1 w-full md:px-6 md:pr-12 md:w-1/2 md:justify-center md:items-center md:flex-row md:order-2">
+            <ul class="flex flex-row items-center justify-around w-full md:items-end md:justify-between">
                 <li>{{ __('Subheader') }}</li>
                 <li>{{ __('Subheader') }}</li>
                 <li>{{ __('Subheader') }}</li>
