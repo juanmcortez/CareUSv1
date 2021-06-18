@@ -17,6 +17,22 @@ require __DIR__ . '/auth.php';
 
 // Protected routes with authorization
 Route::middleware(['auth'])->group(function () {
+
+    /* ***** Patient routes ***** */
+    Route::prefix('patients')->name('patients.')->group(function () {
+        Route::get('list', function () {
+            return view('pages.patients.index');
+        })->name('list');
+    });
+
+    /* ***** User routes ***** */
+    Route::prefix('users')->name('users.')->group(function () {
+        Route::get('profile', function () {
+            return view('pages.users.profile');
+        })->name('profile');
+    });
+
+
     Route::get('/', function () {
         return view('welcome');
     })->name('home');
@@ -24,4 +40,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth'])->name('dashboard');
+});
+
+// Fall back route
+Route::fallback(function () {
+    //
 });
