@@ -1,11 +1,8 @@
-<footer class="flex-col items-center justify-center hidden w-full pt-3 text-sm border-t border-dark-50 md:flex">
+<footer
+    class="flex-col items-center justify-center hidden w-full border-t md:flex text-brand-500 border-brand-300 bg-brand-100">
 
-    <x-menu.main />
+    <x-menu.main class="my-3" />
 
     <x-menu.social />
 
-    <div
-        class="flex flex-row items-center justify-center w-full py-3 border-t text-primary-500 border-primary-300 bg-primary-200">
-        <i class="mr-1 fa fa-copyright"></i>{{ date('Y') }}
-    </div>
 </footer>

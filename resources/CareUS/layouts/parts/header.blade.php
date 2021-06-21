@@ -9,7 +9,7 @@
     </div>
     @isset($subheader)
     <nav
-        class="flex flex-col items-center justify-center w-full md:border-t md:py-6 md:flex-row md:border-dark-50 text-secondary-400 text-md">
+        class="flex flex-col items-center justify-center w-full md:border-t md:py-6 md:flex-row md:border-dark-50 text-secondary-400">
         {{ $subheader }}
     </nav>
     @endisset

@@ -9,7 +9,7 @@
     <div class="flex flex-row flex-grow w-2/3 md:w-full md:flex-col">
 
         <header
-            class="items-center justify-center hidden w-full py-6 border-t md:flex md:border-t-0 border-secondary-800">
+            class="items-center justify-center hidden w-full border-t py-7 md:flex md:border-t-0 border-secondary-800">
             SIDEBAR HEADER
         </header>
 
@@ -21,8 +21,17 @@
     </div>
 
     <footer
-        class="flex items-center justify-end w-1/3 px-6 py-6 border-t md:px-0 md:justify-center md:w-full border-secondary-800">
-        SIDEBAR FOOTER
+        class="flex flex-col items-center justify-end w-1/3 px-6 py-6 border-t md:flex-row md:py-9 md:px-0 md:justify-center md:w-full text-dark-400 border-secondary-800 md:sticky md:bottom-0 md:left-0">
+        <p class="md:mr-5">
+            {{ __("Last login: :date", ['date' => date('M d, Y', strtotime(auth()->user()->updated_at))]) }}
+        </p>
+        <form method="POST" action="{{ route('logout') }}" class="mt-3 md:mt-0">
+            @csrf
+            <a class="text-red-400" href="{{ route('logout') }}"
+                onclick="event.preventDefault(); this.closest('form').submit();">
+                <i class="mr-1 fa fa-sign-out-alt"></i>{{ __('Log Out') }}
+            </a>
+        </form>
     </footer>
 
 </div>
