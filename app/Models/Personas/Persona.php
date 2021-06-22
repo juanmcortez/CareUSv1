@@ -36,7 +36,6 @@ class Persona extends Model
         'owner_type',
         'deleted_at',
         'created_at',
-        'updated_at',
         'user',
     ];
 
