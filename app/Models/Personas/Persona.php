@@ -2,6 +2,7 @@
 
 namespace App\Models\Personas;
 
+use App\Models\Personas\Address;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -87,5 +88,18 @@ class Persona extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'id', 'owner_id')->withDefault();
+    }
+
+
+    /**
+     * Persona - Address model relationship.
+     * This function will retrieve the relationship data.
+     * There can be only one address model per persona.
+     *
+     * @return Address
+     */
+    public function address()
+    {
+        return $this->hasOne(Address::class, 'id', 'owner_id')->where('owner_type', 'persona');
     }
 }
