@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -14,7 +15,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('pages.users.profile');
+        $title = __(":name profile", ['name' => Auth::user()->persona->formated_name]);
+        $description = __(":name profile", ['name' => Auth::user()->persona->formated_name]);
+
+        return view('pages.users.profile', compact('title', 'description'));
     }
 
     /**
