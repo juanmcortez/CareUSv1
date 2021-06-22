@@ -17,12 +17,11 @@
 
     {{-- Page content --}}
     <div class="w-full p-6 md:px-12 text-cemter">
-        {{ $description }}
-
         <pre class="break-words whitespace-normal">
-        {{ auth()->user() }}
-        {{ auth()->user()->persona }}
-        {{ auth()->user()->persona->address }}
+        {{ auth()->user() }}<br />
+        {{ auth()->user()->persona }}<br />
+        {{ auth()->user()->persona->address }}<br />
+        {{ auth()->user()->persona->phone->first() }}<br />
         </pre>
     </div>
     {{-- Page content --}}
