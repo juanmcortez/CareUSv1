@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 text-gray-500 fill-current" />
+                <x-logo class="w-20 h-20 text-gray-500 fill-current" />
             </a>
         </x-slot>
 
@@ -15,12 +15,12 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <!-- Email Address -->
+            <!-- Username -->
             <div>
-                <x-label for="email" :value="__('Email')" />
+                <x-label for="username" :value="__('Username')" />
 
-                <x-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')" required
-                    autofocus />
+                <x-input id="username" class="block w-full mt-1" type="text" name="username" :value="old('username')"
+                    required autofocus />
             </div>
 
             <!-- Password -->

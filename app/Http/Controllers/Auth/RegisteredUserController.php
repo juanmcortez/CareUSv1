@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Users\User;
 use App\Providers\RouteServiceProvider;
+use Database\Factories\Personas\PersonaFactory;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,21 +35,40 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'username'      => 'required|string|max:32|unique:users',
+            'email'         => 'required|string|email|max:255|unique:users',
+            'first_name'    => 'required|string|max:32',
+            'middle_name'   => 'nullable|string|max:32',
+            'last_name'     => 'required|string|max:32',
+            'password'      => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'username'      => $request->username,
+            'email'         => $request->email,
+            'password'      => Hash::make($request->password),
+            'last_login_at' => now(),
         ]);
+
+        $persona = PersonaFactory::new()
+            ->count(1)
+            ->createAddressPhone(1)
+            ->create([
+                'owner_id'      => $user->id,
+                'owner_type'    => 'user',
+                'first_name'    => $request->first_name,
+                'middle_name'   => $request->middle_name,
+                'last_name'     => $request->last_name,
+                'birthdate'     => now(),
+            ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        // After registering, go to profile page.
+        return redirect(route('users.profile'));
+
+        // return redirect(RouteServiceProvider::HOME);
     }
 }
