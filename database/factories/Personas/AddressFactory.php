@@ -23,7 +23,6 @@ class AddressFactory extends Factory
     public function definition()
     {
         return [
-            //
             'owner_id'          => Persona::factory(),
             'owner_type'        => 'persona',
             'street'            => $this->faker->streetName,

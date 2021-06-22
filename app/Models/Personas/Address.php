@@ -40,7 +40,7 @@ class Address extends Model
         'deleted_at',
         'updated_at',
         'created_at',
-        'user',
+        'persona',
     ];
 
 
@@ -75,9 +75,9 @@ class Address extends Model
      * This function will retrieve the relationship data.
      * There can be only one address model per persona.
      *
-     * @return Address
+     * @return Persona
      */
-    public function address()
+    public function persona()
     {
         return $this->belongsTo(Persona::class, 'id', 'owner_id')->withDefault();
     }
