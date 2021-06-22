@@ -4,6 +4,7 @@ namespace Database\Factories\Personas;
 
 use App\Models\Personas\Persona;
 use App\Models\Users\User;
+use Database\Factories\Personas\PhoneFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PersonaFactory extends Factory
@@ -45,7 +46,7 @@ class PersonaFactory extends Factory
                 // Only 1 address
                 AddressFactory::new()->create(['owner_id' => $persona->id, 'owner_type' => 'persona']);
                 // Upto $countPhones phones
-                // PhoneFactory::new()->count($countPhones)->create(['owner_id' => $persona->id, 'owner_type' => 'persona']);
+                PhoneFactory::new()->count($countPhones)->create(['owner_id' => $persona->id, 'owner_type' => 'persona']);
             }
         );
     }

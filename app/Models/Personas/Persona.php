@@ -103,4 +103,17 @@ class Persona extends Model
     {
         return $this->hasOne(Address::class, 'id', 'owner_id')->where('owner_type', 'persona');
     }
+
+
+    /**
+     * Persona - Phone model relationship.
+     * This function will retrieve the relationship data.
+     * There can be only many phone models per persona.
+     *
+     * @return Phone
+     */
+    public function phone()
+    {
+        return $this->hasMany(Phone::class, 'id', 'owner_id')->where('owner_type', 'persona');
+    }
 }
