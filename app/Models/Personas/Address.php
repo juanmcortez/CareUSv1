@@ -61,6 +61,16 @@ class Address extends Model
 
 
     /**
+     * When updating address, touch parent update_at column
+     *
+     * @var array
+     */
+    protected $touches = [
+        'persona'
+    ];
+
+
+    /**
      * Persona - Address model relationship.
      * This function will retrieve the relationship data.
      * There can be only one address model per persona.
