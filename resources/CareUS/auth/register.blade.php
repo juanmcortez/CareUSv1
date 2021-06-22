@@ -14,10 +14,10 @@
 
             <!-- Name -->
             <div>
-                <x-label for="name" :value="__('Name')" />
+                <x-label for="username" :value="__('Username')" />
 
-                <x-input id="name" class="block w-full mt-1" type="text" name="name" :value="old('name')" required
-                    autofocus />
+                <x-input id="username" class="block w-full mt-1" type="text" name="username" :value="old('username')"
+                    required autofocus />
             </div>
 
             <!-- Email Address -->
@@ -26,6 +26,18 @@
 
                 <x-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')"
                     required />
+            </div>
+
+            <!-- Full name -->
+            <div class="mt-4">
+                <x-label for="last_name" :value="__('Name')" />
+
+                <x-input id="last_name" class="inline-block w-1/3 mt-1" type="text" name="last_name"
+                    :value="old('last_name')" placeholder="{{ __('Last') }}" required />
+                <x-input id="first_name" class="inline-block w-1/3 mx-3 mt-1" type="text" name="first_name"
+                    :value="old('first_name')" placeholder="{{ __('First') }}" required />
+                <x-input id="middle_name" class="inline-block w-1/4 mt-1" type="text" name="middle_name"
+                    :value="old('middle_name')" placeholder="{{ __('Middle') }}" />
             </div>
 
             <!-- Password -->
