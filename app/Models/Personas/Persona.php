@@ -31,8 +31,12 @@ class Persona extends Model
      * @var array
      */
     protected $hidden = [
+        'id',
         'owner_id',
         'owner_type',
+        'deleted_at',
+        'created_at',
+        'updated_at',
         'user',
     ];
 
