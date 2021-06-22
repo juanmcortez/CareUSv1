@@ -58,7 +58,8 @@ class Persona extends Model
      * @var array
      */
     protected $casts = [
-        'birthdate' => 'datetime',
+        'birthdate' => 'datetime:Y-m-d',
+        'updated_at' => 'datetime:Y-m-d H:i',
     ];
 
 
