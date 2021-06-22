@@ -35,7 +35,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
         'deleted_at',
-        'created_at',
         'updated_at',
         'email_verified_at',
         'persona',
