@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
-use Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -15,8 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        return view('pages.users.profile', compact('user'));
+        return view('pages.users.profile');
     }
 
     /**
