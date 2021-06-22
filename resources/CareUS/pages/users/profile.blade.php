@@ -22,6 +22,7 @@
         <pre class="break-words whitespace-normal">
         {{ auth()->user() }}
         {{ auth()->user()->persona }}
+        {{ auth()->user()->persona->address }}
         </pre>
     </div>
     {{-- Page content --}}

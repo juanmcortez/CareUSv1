@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Personas\Persona;
 use App\Models\Users\User;
 use App\Providers\RouteServiceProvider;
+use Database\Factories\Personas\PersonaFactory;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,14 +50,17 @@ class RegisteredUserController extends Controller
             'last_login_at' => now(),
         ]);
 
-        $persona = Persona::create([
-            'owner_id'      => $user->id,
-            'owner_type'    => 'user',
-            'first_name'    => $request->first_name,
-            'middle_name'   => $request->middle_name,
-            'last_name'     => $request->last_name,
-            'birthdate'     => now(),
-        ]);
+        $persona = PersonaFactory::new()
+            ->count(1)
+            ->createAddressPhone(1)
+            ->create([
+                'owner_id'      => $user->id,
+                'owner_type'    => 'user',
+                'first_name'    => $request->first_name,
+                'middle_name'   => $request->middle_name,
+                'last_name'     => $request->last_name,
+                'birthdate'     => now(),
+            ]);
 
         event(new Registered($user));
 
