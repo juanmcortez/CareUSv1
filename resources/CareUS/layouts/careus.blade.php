@@ -44,7 +44,7 @@
         x-data="{ open: localStorage.getItem('sidebar_status') }"
         x-init="$watch('open', (value) => localStorage.setItem('sidebar_status', value))">
 
-        <div :class="(open === 'false') ? 'w-full' : 'w-full md:w-9/12 xl:w-10/12'" class="flex">
+        <div :class="(open === 'false') ? 'w-full' : 'w-full md:w-9/12 xl:w-10/12'" class="flex w-full">
             <div class="flex flex-col items-start justify-between w-full">
                 <div class="flex flex-col w-full">
 
@@ -63,7 +63,7 @@
 
         {{-- SIDEBAR --}}
         <div :class="(open === 'false') ? 'w-full md:w-5' : 'w-full md:3/12 lg:w-2/12'"
-            class="flex md:border-l md:relative md:flex-grow bg-secondary-900 text-brand-100">
+            class="flex w-full md:border-l md:relative md:flex-grow bg-secondary-900 text-brand-100 md:w-5">
 
             @include('layouts.parts.sidebar')
 
