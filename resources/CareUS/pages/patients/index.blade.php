@@ -13,10 +13,10 @@
     </x-slot>
 
     <div class="w-full p-6 md:px-12 text-cemter">
+        {{-- <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> --}}
         {{ __("You're logged in!") }}
     </div>
 
