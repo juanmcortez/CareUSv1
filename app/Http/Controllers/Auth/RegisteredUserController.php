@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Users\User;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use Database\Factories\Personas\PersonaFactory;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -59,7 +60,7 @@ class RegisteredUserController extends Controller
                 'first_name'    => $request->first_name,
                 'middle_name'   => $request->middle_name,
                 'last_name'     => $request->last_name,
-                'birthdate'     => now(),
+                'birthdate'     => Carbon::now()->format(config('app.dateformat')),
             ]);
 
         event(new Registered($user));

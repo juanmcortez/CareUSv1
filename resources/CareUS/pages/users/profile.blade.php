@@ -61,6 +61,14 @@
                     <x-input id="birthdate" class="block w-full mt-1" type="text" name="persona[birthdate]"
                         :value="auth()->user()->persona->birthdate" />
                 </div>
+
+                <div class="w-3/12 mr-2">
+                    <x-label for="language" :value="__('Language')" />
+                    <x-select id="language" class="block w-full mt-1" name="persona[language]"
+                        :selected="auth()->user()->persona->language"
+                        :options="[['value' => 'en', 'title' => 'English'], ['value' => 'es', 'title' => 'Español'],  ['value' => 'fr', 'title' => 'Français']]" />
+                </div>
+
                 <div class="flex flex-row items-center justify-start w-3/12">
                     @isset(auth()->user()->persona->profile_photo)
                     <img class="w-12 h-12 mt-6 ml-3 mr-5 border-2 rounded-full border-primary-500"
@@ -81,7 +89,7 @@
                     </div>
                     {{-- File upload --}}
                 </div>
-                <div class="w-6/12">&nbsp;</div>
+                <div class="w-3/12">&nbsp;</div>
             </div>
 
             <div class="flex flex-row items-center justify-start w-full mt-10">
@@ -181,7 +189,8 @@
                     <x-button class="bg-green-500 hover:bg-green-700">
                         <i class="mr-1 fa fa-save"></i>{{ __('Update') }}
                     </x-button>
-                    <x-button class="bg-red-500 hover:bg-red-700">
+                    <x-button type="button" class="bg-red-500 hover:bg-red-700"
+                        onclick="document.location.href='{{ route('dashboard') }}';">
                         <i class="mr-1 fa fa-times"></i>{{ __('Cancel') }}
                     </x-button>
                 </div>

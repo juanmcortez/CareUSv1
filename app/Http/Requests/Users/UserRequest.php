@@ -31,6 +31,7 @@ class UserRequest extends FormRequest
             'persona.middle_name'       => 'nullable|string|between:2,32',
             'persona.last_name'         => 'required_with:persona.first_name|string|between:2,32',
             'persona.birthdate'         => 'required|date_format:"' . config('app.dateformat') . '"',
+            'persona.language'          => 'nullable|string|max:2',
             'persona.profile_photo'     => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
 
             'address.street'            => 'nullable|string|between:2,64',
