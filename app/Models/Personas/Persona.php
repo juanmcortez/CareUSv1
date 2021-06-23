@@ -4,6 +4,7 @@ namespace App\Models\Personas;
 
 use App\Models\Personas\Address;
 use App\Models\Users\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -60,7 +61,7 @@ class Persona extends Model
      * @var array
      */
     protected $casts = [
-        'birthdate' => 'datetime:Y-m-d',
+        'birthdate' => 'date:Y-m-d',
         'updated_at' => 'datetime:Y-m-d H:i',
     ];
 
@@ -78,6 +79,30 @@ class Persona extends Model
             $formated = $this->last_name . ', ' . $this->first_name;
         }
         return $formated;
+    }
+
+
+    /**
+     * Birthdate Mutator
+     *
+     * @param string $value
+     * @return string
+     */
+    public function setBirthdateAttribute($value)
+    {
+        $this->attributes['birthdate'] = Carbon::createFromFormat(config('app.dateformat'), $value)->format(config('app.dbdateformat'));
+    }
+
+
+    /**
+     * Birthdate Accesor
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getBirthdateAttribute($value)
+    {
+        return Carbon::parse($value)->format(config('app.dateformat'));
     }
 
 
