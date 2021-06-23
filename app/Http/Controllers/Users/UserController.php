@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Users\UserRequest;
+use App\Models\Users\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,13 +69,33 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\UserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request)
     {
-        //
+        // Preformat data received.
+        $data           = $request->all();
+        $userData       = $data['user'];
+        $personaData    = $data['user']['persona'];
+        $addressData    = $data['user']['persona']['address'];
+        $phoneData      = $data['user']['persona']['phone'];
+        unset($userData['persona']);
+        unset($personaData['phone']);
+        unset($personaData['address']);
+
+        // Parse date
+        //$personaData['birthdate'] = date('Y-m-d', strtotime($personaData['birthdate']));
+
+        // Update models
+        $user = User::findOrFail(Auth::user()->id);
+        $user->update($userData);
+        $user->persona->update($personaData);
+        $user->persona->address->update($addressData);
+        $user->persona->phone->first()->update($phoneData);
+
+        return redirect(route('users.profile'))
+            ->with('success', __('<strong>:name</strong> profile, updated successfully.', ["name" => Auth::user()->persona->formated_name]));
     }
 
     /**

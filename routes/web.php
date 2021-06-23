@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
     /* ***** User routes ***** */
     Route::prefix('users')->name('users.')->group(function () {
         Route::get('profile', [UserController::class, 'index'])->name('profile');
+        Route::put('profile', [UserController::class, 'update'])->name('profile.update');
     });
 
 
