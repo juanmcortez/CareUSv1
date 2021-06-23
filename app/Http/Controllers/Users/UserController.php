@@ -76,23 +76,13 @@ class UserController extends Controller
      */
     public function update(UserRequest $request)
     {
-        // Preformat data received.
-        $data           = $request->all();
-        $userData       = $data['user'];
-        $personaData    = $data['user']['persona'];
-        $addressData    = $data['user']['persona']['address'];
-        $phoneData      = $data['user']['persona']['phone'];
-        unset($userData['persona']);
-        unset($personaData['phone']);
-        unset($personaData['address']);
-
-        // Parse date
-        //$personaData['birthdate'] = date('Y-m-d', strtotime($personaData['birthdate']));
+        // Master array
+        $data = $request->all();
 
         /* ***** HANDLE Profile Photo ***** */
-        if ($request->hasFile('user.persona.profile_photo')) {
+        if ($request->hasFile('persona.profile_photo')) {
             // Get the uploaded image and resize it with aspect ratio change it to jpg in 75% quality
-            $resizeupload = Image::make($request->file('user.persona.profile_photo')->path())->fit(100)->encode('jpg', 75);
+            $resizeupload = Image::make($request->file('persona.profile_photo')->path())->fit(150)->encode('jpg', 75);
             // Create the new name
             $filename = md5(uniqid(time(), true)) . '.jpg';
             // Store the file in the system and prepare reference for db
@@ -104,16 +94,16 @@ class UserController extends Controller
                     Storage::delete(env('USR_FILE_STO') . DIRECTORY_SEPARATOR . $oldprofpho[1]);
                 }
                 // New image location
-                $personaData['profile_photo'] = env('USR_FILE_LOC') . DIRECTORY_SEPARATOR . $filename;
+                $data['persona']['profile_photo'] = env('USR_FILE_LOC') . DIRECTORY_SEPARATOR . $filename;
             }
         }
 
         // Update models
         $user = User::findOrFail(Auth::user()->id);
-        $user->update($userData);
-        $user->persona->update($personaData);
-        $user->persona->address->update($addressData);
-        $user->persona->phone->first()->update($phoneData);
+        $user->update($data['user']);
+        $user->persona->update($data['persona']);
+        $user->persona->address->update($data['address']);
+        $user->persona->phone->first()->update($data['phone']);
 
         return redirect(route('users.profile'))
             ->with('success', __('<strong>:name</strong> profile, updated successfully.', ["name" => Auth::user()->persona->formated_name]));

@@ -39,17 +39,17 @@
             <div class="flex flex-row items-center justify-between w-full mt-10">
                 <div class="w-3/12 mr-2">
                     <x-label for="last_name" :value="__('Name')" />
-                    <x-input id="last_name" class="block w-full mt-1" type="text" name="user[persona][last_name]"
+                    <x-input id="last_name" class="block w-full mt-1" type="text" name="persona[last_name]"
                         :value="auth()->user()->persona->last_name" placeholder="{{ __('Last') }}" />
                 </div>
                 <div class="w-3/12 mr-2">
                     <x-label for="first_name" value="&nbsp;" />
-                    <x-input id="first_name" class="block w-full mt-1" type="text" name="user[persona][first_name]"
+                    <x-input id="first_name" class="block w-full mt-1" type="text" name="persona[first_name]"
                         :value="auth()->user()->persona->first_name" placeholder="{{ __('First') }}" />
                 </div>
                 <div class="w-3/12 mr-2">
                     <x-label for="middle_name" value="&nbsp;" />
-                    <x-input id="middle_name" class="block w-full mt-1" type="text" name="user[persona][middle_name]"
+                    <x-input id="middle_name" class="block w-full mt-1" type="text" name="persona[middle_name]"
                         :value="auth()->user()->persona->middle_name" placeholder="{{ __('Middle') }}" />
                 </div>
                 <div class="w-3/12">&nbsp;</div>
@@ -58,8 +58,8 @@
             <div class="flex flex-row items-center justify-between w-full mt-4">
                 <div class="w-3/12 mr-2">
                     <x-label for="birthdate" :value="__('Birthdate')" />
-                    <x-input id="birthdate" class="block w-full mt-1" type="text" name="user[persona][birthdate]"
-                        :value="auth()->user()->persona->birthdate->format('m-d-Y')" />
+                    <x-input id="birthdate" class="block w-full mt-1" type="text" name="persona[birthdate]"
+                        :value="auth()->user()->persona->birthdate" />
                 </div>
                 <div class="flex flex-row items-center justify-start w-3/12">
                     @isset(auth()->user()->persona->profile_photo)
@@ -76,7 +76,7 @@
                             class="flex flex-row items-center justify-center w-full py-2 transition duration-150 ease-in-out border cursor-pointer bg-primary-100 text-primary-500 border-primary-400 hover:bg-primary-200 hover:text-primary-400">
                             <i class="mr-2 text-sm fa fa-upload"></i>
                             <span class="leading-normal">{{ __('Select a file') }}</span>
-                            <input type='file' name="user[persona][profile_photo]" class="hidden" />
+                            <input type='file' name="persona[profile_photo]" class="hidden" />
                         </label>
                     </div>
                     {{-- File upload --}}
@@ -90,8 +90,8 @@
                     <div class="inline-flex items-center justify-center w-full">
                         <p class="mx-3 mt-1">+</p>
                         <x-input id="intl_code" class="block w-full mt-1 text-center" type="text"
-                            name="user[persona][phone][intl_code]"
-                            :value="auth()->user()->persona->phone->first()->intl_code" placeholder="1" />
+                            name="phone[intl_code]" :value="auth()->user()->persona->phone->first()->intl_code"
+                            placeholder="1" />
                     </div>
                 </div>
                 <div class="w-1/12 mr-2">
@@ -99,26 +99,24 @@
                     <div class="inline-flex items-center justify-center w-full">
                         <p class="mx-3 mt-1">(</p>
                         <x-input id="area_code" class="block w-full mt-1 text-center" type="text"
-                            name="user[persona][phone][area_code]"
-                            :value="auth()->user()->persona->phone->first()->area_code" placeholder="000" />
+                            name="phone[area_code]" :value="auth()->user()->persona->phone->first()->area_code"
+                            placeholder="000" />
                         <p class="mx-3 mt-1">)</p>
                     </div>
                 </div>
                 <div class="w-1/12 mr-2">
                     <x-label for="prefix" value="&nbsp;" />
                     <div class="inline-flex items-center justify-center w-full">
-                        <x-input id="prefix" class="block w-full mt-1 text-center" type="text"
-                            name="user[persona][phone][prefix]" :value="auth()->user()->persona->phone->first()->prefix"
-                            placeholder="000" />
+                        <x-input id="prefix" class="block w-full mt-1 text-center" type="text" name="phone[prefix]"
+                            :value="auth()->user()->persona->phone->first()->prefix" placeholder="000" />
                     </div>
                 </div>
                 <div class="w-1/12 mr-2">
                     <x-label for="line" value="&nbsp;" />
                     <div class="inline-flex items-center justify-center w-full">
                         <p class="mx-3 mt-1">-</p>
-                        <x-input id="line" class="block w-full mt-1 text-center" type="text"
-                            name="user[persona][phone][line]" :value="auth()->user()->persona->phone->first()->line"
-                            placeholder="0000" />
+                        <x-input id="line" class="block w-full mt-1 text-center" type="text" name="phone[line]"
+                            :value="auth()->user()->persona->phone->first()->line" placeholder="0000" />
                     </div>
                 </div>
                 <div class="w-1/12 mr-2">
@@ -126,8 +124,8 @@
                     <div class="inline-flex items-center justify-center w-full">
                         <p class="mx-3 mt-1">{{ __('Ext.') }}</p>
                         <x-input id="extension" class="block w-full mt-1 text-center" type="text"
-                            name="user[persona][phone][extension]"
-                            :value="auth()->user()->persona->phone->first()->extension" placeholder="00" />
+                            name="phone[extension]" :value="auth()->user()->persona->phone->first()->extension"
+                            placeholder="00" />
                     </div>
                 </div>
                 <div class="w-7/12">&nbsp;</div>
@@ -136,33 +134,32 @@
             <div class="flex flex-row items-center justify-between w-full mt-10">
                 <div class="w-3/12 mr-2">
                     <x-label for="street" :value="__('Address')" />
-                    <x-input id="street" class="block w-full mt-1" type="text" name="user[persona][address][street]"
+                    <x-input id="street" class="block w-full mt-1" type="text" name="address[street]"
                         :value="auth()->user()->persona->address->street" placeholder="{{ __('Street') }}" />
                 </div>
                 <div class="w-3/12 mr-2">
                     <x-label for="street_extended" value="&nbsp;" />
-                    <x-input id="street_extended" class="block w-full mt-1" type="text"
-                        name="user[persona][address][street_extended]"
+                    <x-input id="street_extended" class="block w-full mt-1" type="text" name="address[street_extended]"
                         :value="auth()->user()->persona->address->street_extended" placeholder="{{ __('Extended') }}" />
                 </div>
                 <div class="w-3/12 mr-2">
                     <x-label for="city" value="&nbsp;" />
-                    <x-input id="city" class="block w-full mt-1" type="text" name="user[persona][address][city]"
+                    <x-input id="city" class="block w-full mt-1" type="text" name="address[city]"
                         :value="auth()->user()->persona->address->city" placeholder="{{ __('City') }}" />
                 </div>
                 <div class="w-3/12">&nbsp;</div>
             </div>
             <div class="flex flex-row items-center justify-between w-full mt-2">
                 <div class="w-3/12 mr-2">
-                    <x-input id="state" class="block w-full mt-2" type="text" name="user[persona][address][state]"
+                    <x-input id="state" class="block w-full mt-2" type="text" name="address[state]"
                         :value="auth()->user()->persona->address->state" placeholder="{{ __('State') }}" />
                 </div>
                 <div class="w-3/12 mr-2">
-                    <x-input id="zip" class="block w-full mt-2" type="text" name="user[persona][address][zip]"
+                    <x-input id="zip" class="block w-full mt-2" type="text" name="address[zip]"
                         :value="auth()->user()->persona->address->zip" placeholder="{{ __('Postal Code') }}" />
                 </div>
                 <div class="w-3/12 mr-2">
-                    <x-input id="country" class="block w-full mt-2" type="text" name="user[persona][address][country]"
+                    <x-input id="country" class="block w-full mt-2" type="text" name="address[country]"
                         :value="auth()->user()->persona->address->country" placeholder="{{ __('Country') }}" />
                 </div>
                 <div class="w-3/12">&nbsp;</div>
