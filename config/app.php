@@ -69,6 +69,10 @@ return [
 
     'timezone' => env('APP_TIMEZONE', 'UTC'),
 
+    'dateformat' => env('DATE_PHP_FRMT', 'd-m-Y'),
+    'jsdateformat' => env('DATE_JST_FRMT', 'DD-MM-YYYY'),
+    'dbdateformat' => env('DATE_SQL_FRMT', 'Y-m-d'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
