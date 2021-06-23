@@ -14,3 +14,21 @@
     </nav>
     @endisset
 </header>
+
+{{-- SYSTEM MESSAGES --}}
+@if($errors->any())
+<x-alerts.ribbon color="red" icon="times-circle" title="Error" :description="$errors->all()" />
+@endif
+
+@if (Session::has('success'))
+<x-alerts.ribbon color="green" icon="check-circle" title="" :description="session('success')" />
+@endif
+
+@if (Session::has('info'))
+<x-alerts.ribbon :description="session('info')" />
+@endif
+
+@if (Session::has('status'))
+<x-alerts.ribbon title="Status" :description="session('status')" />
+@endif
+{{-- SYSTEM MESSAGES --}}
