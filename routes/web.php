@@ -33,6 +33,25 @@ Route::middleware(['auth'])->group(function () {
     });
 
 
+    /* **** Temp routes ***** */
+    Route::prefix('codes')->name('codes.')->group(function () {
+        Route::get('/list', [UserController::class, 'index'])->name('index');
+    });
+
+    Route::prefix('insurances')->name('insurances.')->group(function () {
+        Route::get('/list', [UserController::class, 'index'])->name('index');
+    });
+
+    Route::prefix('practice')->name('practice.')->group(function () {
+        Route::get('/settings', [UserController::class, 'index'])->name('index');
+    });
+
+    Route::prefix('system')->name('careus.')->group(function () {
+        Route::prefix('settings')->name('settings.')->group(function () {
+            Route::get('/lists', [UserController::class, 'index'])->name('lists');
+        });
+    });
+
     Route::get('/', function () {
         return view('welcome');
     })->name('home');
@@ -40,6 +59,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth'])->name('dashboard');
+
+    /* **** Temp routes ***** */
 });
 
 // Fall back route
