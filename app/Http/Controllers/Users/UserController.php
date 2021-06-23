@@ -7,6 +7,8 @@ use App\Http\Requests\Users\UserRequest;
 use App\Models\Users\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class UserController extends Controller
 {
@@ -89,10 +91,20 @@ class UserController extends Controller
 
         /* ***** HANDLE Profile Photo ***** */
         if ($request->hasFile('user.persona.profile_photo')) {
-            $filename = 'usrID_' . auth()->user()->id . '_' . time() . '.' . $request->file('user.persona.profile_photo')->extension();
-            $storeimage = $request->file('user.persona.profile_photo')->storeAs('images/users', $filename, 'public');
-            if ($storeimage) {
-                $personaData['profile_photo'] = 'images/users/' . $filename;
+            // Get the uploaded image and resize it with aspect ratio change it to jpg in 75% quality
+            $resizeupload = Image::make($request->file('user.persona.profile_photo')->path())->fit(100)->encode('jpg', 75);
+            // Create the new name
+            $filename = md5(uniqid(time(), true)) . '.jpg';
+            // Store the file in the system and prepare reference for db
+            if (Storage::put(env('USR_FILE_STO') . DIRECTORY_SEPARATOR . $filename, $resizeupload)) {
+                // Delete the old image
+                if (User::findOrFail(Auth::user()->id)->persona->profile_photo) {
+                    $oldprofpho = User::findOrFail(Auth::user()->id)->persona->profile_photo;
+                    $oldprofpho = explode(env('USR_FILE_LOC') . DIRECTORY_SEPARATOR, $oldprofpho);
+                    Storage::delete(env('USR_FILE_STO') . DIRECTORY_SEPARATOR . $oldprofpho[1]);
+                }
+                // New image location
+                $personaData['profile_photo'] = env('USR_FILE_LOC') . DIRECTORY_SEPARATOR . $filename;
             }
         }
 

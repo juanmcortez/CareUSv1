@@ -31,6 +31,7 @@ class UserRequest extends FormRequest
             'user.persona.middle_name'              => 'nullable|string|between:2,32',
             'user.persona.last_name'                => 'required_with:user.persona.first_name|string|between:2,32',
             'user.persona.birthdate'                => 'required|date_format:m-d-Y',
+            'user.persona.profile_photo'            => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
 
             'user.persona.address.street'           => 'nullable|string|between:2,64',
             'user.persona.address.street_extended'  => 'nullable|string|between:2,64',
