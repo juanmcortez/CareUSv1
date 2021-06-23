@@ -21,11 +21,11 @@
 @endif
 
 @if (Session::has('success'))
-<x-alerts.ribbon color="green" icon="check-circle" title="" :description="session('success')" />
+<x-alerts.ribbon color="green" icon="check-circle" title="Success" :description="session('success')" />
 @endif
 
 @if (Session::has('info'))
-<x-alerts.ribbon :description="session('info')" />
+<x-alerts.ribbon title="Info" :description="session('info')" />
 @endif
 
 @if (Session::has('status'))
