@@ -151,16 +151,18 @@
             </div>
             <div class="flex flex-row items-center justify-between w-full mt-2">
                 <div class="w-3/12 mr-2">
-                    <x-input id="state" class="block w-full mt-2" type="text" name="address[state]"
-                        :value="auth()->user()->persona->address->state" placeholder="{{ __('State') }}" />
+                    <x-select id="state" class="block w-full mt-2" name="address[state]"
+                        :selected="auth()->user()->persona->address->state"
+                        :options="[['value' => 'CBA', 'title' => 'Córdoba'], ['value' => 'BSAS', 'title' => 'Buenos Aires'], ]" />
                 </div>
                 <div class="w-3/12 mr-2">
                     <x-input id="zip" class="block w-full mt-2" type="text" name="address[zip]"
                         :value="auth()->user()->persona->address->zip" placeholder="{{ __('Postal Code') }}" />
                 </div>
                 <div class="w-3/12 mr-2">
-                    <x-input id="country" class="block w-full mt-2" type="text" name="address[country]"
-                        :value="auth()->user()->persona->address->country" placeholder="{{ __('Country') }}" />
+                    <x-select id="country" class="block w-full mt-2" name="address[country]"
+                        :selected="auth()->user()->persona->address->country"
+                        :options="[['value' => 'AR', 'title' => 'Argentina'], ['value' => 'US', 'title' => 'United States'], ]" />
                 </div>
                 <div class="w-3/12">&nbsp;</div>
             </div>
