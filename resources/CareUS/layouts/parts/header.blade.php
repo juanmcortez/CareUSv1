@@ -17,7 +17,7 @@
 
 {{-- SYSTEM MESSAGES --}}
 @if($errors->any())
-<x-alerts.ribbon color="red" icon="times-circle" title="Error" :description="$errors->all()" />
+<x-alerts.ribbon color="red" icon="exclamation-triangle" title="Error" :description="$errors->all()" />
 @endif
 
 @if (Session::has('success'))

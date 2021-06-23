@@ -64,6 +64,7 @@ class UserRequest extends FormRequest
             'user.persona.middle_name'              => '<strong>Middle name</strong>',
             'user.persona.last_name'                => '<strong>Last name</strong>',
             'user.persona.birthdate'                => '<strong>Birthdate</strong>',
+            'user.persona.profile_photo'            => '<strong>Profile photo</strong>',
 
             'user.persona.address.street'           => '<strong>Street</strong>',
             'user.persona.address.street_extended'  => '<strong>Street extended</strong>',
