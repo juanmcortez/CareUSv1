@@ -40,7 +40,7 @@ class UserRequest extends FormRequest
             'user.persona.address.country'          => 'nullable|string|max:2',
 
             'user.persona.phone.intl_code'          => 'required_with:user.persona.phone.area_code,user.persona.phone.prefix,user.persona.phone.line|numeric|digits_between:0,2',
-            'user.persona.phone.area_code'          => 'required_with:user.persona.phone.intl_code,user.persona.phone.prefix,user.persona.phone.line,filled|numeric|digits:3',
+            'user.persona.phone.area_code'          => 'required_with:user.persona.phone.intl_code,user.persona.phone.prefix,user.persona.phone.line|numeric|digits:3',
             'user.persona.phone.prefix'             => 'required_with:user.persona.phone.intl_code,user.persona.phone.area_code,user.persona.phone.line|numeric|digits:3',
             'user.persona.phone.line'               => 'required_with:user.persona.phone.intl_code,user.persona.phone.area_code,user.persona.phone.prefix|numeric|digits:4',
             'user.persona.phone.extension'          => 'nullable|numeric|digits_between:0,2',
