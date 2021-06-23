@@ -24,6 +24,7 @@ class CreatePersonasTable extends Migration
             $table->string('last_name', 32);
 
             $table->date('birthdate');
+            $table->longText('profile_photo')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
