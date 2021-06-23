@@ -24,6 +24,7 @@ class Persona extends Model
         'middle_name',
         'last_name',
         'birthdate',
+        'profile_photo',
     ];
 
 

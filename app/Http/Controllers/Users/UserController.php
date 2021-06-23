@@ -87,6 +87,15 @@ class UserController extends Controller
         // Parse date
         //$personaData['birthdate'] = date('Y-m-d', strtotime($personaData['birthdate']));
 
+        /* ***** HANDLE Profile Photo ***** */
+        if ($request->hasFile('user.persona.profile_photo')) {
+            $filename = 'usrID_' . auth()->user()->id . '_' . time() . '.' . $request->file('user.persona.profile_photo')->extension();
+            $storeimage = $request->file('user.persona.profile_photo')->storeAs('images/users', $filename, 'public');
+            if ($storeimage) {
+                $personaData['profile_photo'] = 'images/users/' . $filename;
+            }
+        }
+
         // Update models
         $user = User::findOrFail(Auth::user()->id);
         $user->update($userData);

@@ -17,7 +17,8 @@
 
     {{-- Page content --}}
     <div class="w-full p-6 md:px-12 text-cemter">
-        <form method="POST" action="{{  route('users.profile.update') }}" class="flex flex-col flex-wrap w-full">
+        <form method="POST" action="{{  route('users.profile.update') }}" enctype="multipart/form-data"
+            class="flex flex-col flex-wrap w-full">
             @csrf
             @method('PUT')
 
@@ -60,7 +61,27 @@
                     <x-input id="birthdate" class="block w-full mt-1" type="text" name="user[persona][birthdate]"
                         :value="auth()->user()->persona->birthdate->format('m-d-Y')" />
                 </div>
-                <div class="w-9/12">&nbsp;</div>
+                <div class="flex flex-row items-center justify-start w-3/12">
+                    @isset(auth()->user()->persona->profile_photo)
+                    <img class="w-12 h-12 mt-6 ml-3 mr-5 border-2 rounded-full border-primary-500"
+                        alt="{{ auth()->user()->persona->formated_name }}"
+                        src="{{ secure_asset(auth()->user()->persona->profile_photo) }}" />
+                    @else
+                    <i class="mt-6 ml-3 mr-5 text-4xl fas fa-user-circle text-primary-700"
+                        title="{{ auth()->user()->persona->formated_name }}"></i>
+                    @endisset
+                    {{-- File upload --}}
+                    <div class="flex items-center justify-center w-full mt-6 mr-2">
+                        <label
+                            class="flex flex-row items-center justify-center w-full py-2 transition duration-150 ease-in-out border cursor-pointer bg-primary-100 text-primary-500 border-primary-400 hover:bg-primary-200 hover:text-primary-400">
+                            <i class="mr-2 text-sm fa fa-upload"></i>
+                            <span class="leading-normal">{{ __('Select a file') }}</span>
+                            <input type='file' name="user[persona][profile_photo]" class="hidden" />
+                        </label>
+                    </div>
+                    {{-- File upload --}}
+                </div>
+                <div class="w-6/12">&nbsp;</div>
             </div>
 
             <div class="flex flex-row items-center justify-start w-full mt-10">
@@ -152,11 +173,11 @@
                     <x-label for="username"
                         :value="__('<strong>Created on:</strong> :date', ['date' => auth()->user()->created_at])" />
                 </div>
-                <div class="w-3/12 mr-2">
+                <div class="w-3/12">&nbsp;</div>
+                <div class="w-4/12 mr-2">
                     <x-label for="username"
                         :value="__('<strong>Updated on:</strong> :date', ['date' => auth()->user()->persona->updated_at])" />
                 </div>
-                <div class="w-4/12">&nbsp;</div>
                 <div class="flex flex-row items-center justify-around w-2/12">
                     <x-button class="bg-green-500 hover:bg-green-700">
                         <i class="mr-1 fa fa-save"></i>{{ __('Update') }}
