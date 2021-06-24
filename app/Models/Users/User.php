@@ -3,6 +3,7 @@
 namespace App\Models\Users;
 
 use App\Models\Personas\Persona;
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -61,6 +62,30 @@ class User extends Authenticatable
         'last_login_at' => 'datetime:Y-m-d H:i',
         'created_at' => 'datetime:Y-m-d H:i',
     ];
+
+
+    /**
+     * Created at Accesor
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getCreatedAtAttribute($value)
+    {
+        return ucfirst(Carbon::parse($value)->translatedFormat(config('app.updateformat')));
+    }
+
+
+    /**
+     * Last login at Accesor
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getLastLoginAtAttribute($value)
+    {
+        return ucfirst(Carbon::parse($value)->translatedFormat(config('app.updateformat')));
+    }
 
 
     /**

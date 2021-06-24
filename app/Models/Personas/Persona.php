@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Lang;
 
 class Persona extends Model
 {
@@ -91,7 +92,10 @@ class Persona extends Model
      */
     public function setBirthdateAttribute($value)
     {
-        $this->attributes['birthdate'] = Carbon::createFromFormat(config('app.dateformat'), $value)->format(config('app.dbdateformat'));
+        // Translate the date from current lang to english.
+        $newvalue = str_replace('.', '', Carbon::translateTimeString($value, Lang::locale(), config('app.locale')));
+        // Create from translated
+        $this->attributes['birthdate'] = Carbon::createFromLocaleFormat(config('app.dateformat'), Lang::locale(), $newvalue)->format(config('app.dbdateformat'));
     }
 
 
@@ -103,7 +107,19 @@ class Persona extends Model
      */
     public function getBirthdateAttribute($value)
     {
-        return Carbon::parse($value)->format(config('app.dateformat'));
+        return str_replace('.', '', ucfirst(Carbon::parse($value)->translatedFormat(config('app.dateformat'))));
+    }
+
+
+    /**
+     * Updated at Accesor
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getUpdatedAtAttribute($value)
+    {
+        return ucfirst(Carbon::parse($value)->translatedFormat(config('app.updateformat')));
     }
 
 

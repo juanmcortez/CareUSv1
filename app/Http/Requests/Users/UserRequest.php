@@ -30,7 +30,8 @@ class UserRequest extends FormRequest
             'persona.first_name'        => 'required_with:persona.last_name|string|between:2,32',
             'persona.middle_name'       => 'nullable|string|between:2,32',
             'persona.last_name'         => 'required_with:persona.first_name|string|between:2,32',
-            'persona.birthdate'         => 'required|date_format:"' . config('app.dateformat') . '"',
+            // 'persona.birthdate'         => 'required|date_format:"' . config('app.dateformat') . '"',
+            'persona.birthdate'         => 'required',
             'persona.language'          => 'nullable|string|max:2',
             'persona.profile_photo'     => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
 
@@ -46,52 +47,6 @@ class UserRequest extends FormRequest
             'phone.prefix'              => 'required_with:phone.intl_code,phone.area_code,phone.line|numeric|digits:3',
             'phone.line'                => 'required_with:phone.intl_code,phone.area_code,phone.prefix|numeric|digits:4',
             'phone.extension'           => 'nullable|numeric|digits_between:0,2',
-        ];
-    }
-
-
-    /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            'user.username'             => '<strong>Username</strong>',
-            'user.email'                => '<strong>E-mail</strong>',
-
-            'persona.first_name'        => '<strong>First name</strong>',
-            'persona.middle_name'       => '<strong>Middle name</strong>',
-            'persona.last_name'         => '<strong>Last name</strong>',
-            'persona.birthdate'         => '<strong>Birthdate</strong>',
-            'persona.profile_photo'     => '<strong>Profile photo</strong>',
-
-            'address.street'            => '<strong>Street</strong>',
-            'address.street_extended'   => '<strong>Street extended</strong>',
-            'address.city'              => '<strong>City</strong>',
-            'address.state'             => '<strong>State</strong>',
-            'address.zip'               => '<strong>Zip</strong>',
-            'address.country'           => '<strong>Country</strong>',
-
-            'phone.intl_code'           => '<strong>Phone international code</strong>',
-            'phone.area_code'           => '<strong>Phone area code</strong>',
-            'phone.prefix'              => '<strong>Phone prefix</strong>',
-            'phone.line'                => '<strong>Phone line</strong>',
-            'phone.extension'           => '<strong>Phone extension</strong>',
-        ];
-    }
-
-
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            //
         ];
     }
 }
