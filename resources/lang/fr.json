@@ -739,5 +739,6 @@
     "Appointments": "Rendez-vous",
     "Reports": "Rapports",
     ":name profile": "Profil de :name",
-    "Patient's List": "Liste des Patients"
+    "Patient's List": "Liste des Patients",
+    "<strong>:name</strong> profile, updated successfully.": "Profil de <strong>:name</strong> mis à jour avec succès."
 }
