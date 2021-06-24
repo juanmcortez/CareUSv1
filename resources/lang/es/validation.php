@@ -166,5 +166,27 @@ return [
         'title'                 => 'título',
         'username'              => 'usuario',
         'year'                  => 'año',
+
+        'user.username'             => '<strong>Usuario</strong>',
+        'user.email'                => '<strong>Correo Electrónico</strong>',
+
+        'persona.first_name'        => '<strong>Primer Nombre</strong>',
+        'persona.middle_name'       => '<strong>Segundo Nombre</strong>',
+        'persona.last_name'         => '<strong>Apellido</strong>',
+        'persona.birthdate'         => '<strong>Fecha Nacimiento</strong>',
+        'persona.profile_photo'     => '<strong>Foto de Perfil</strong>',
+
+        'address.street'            => '<strong>Calle</strong>',
+        'address.street_extended'   => '<strong>Detalles</strong>',
+        'address.city'              => '<strong>Ciudad</strong>',
+        'address.state'             => '<strong>Estado</strong>',
+        'address.zip'               => '<strong>Código Postal</strong>',
+        'address.country'           => '<strong>País</strong>',
+
+        'phone.intl_code'           => '<strong>Código Internacional de Teléfono</strong>',
+        'phone.area_code'           => '<strong>Código de Área de Teléfono</strong>',
+        'phone.prefix'              => '<strong>Prefijo de Teléfono</strong>',
+        'phone.line'                => '<strong>Línea de Teléfono</strong>',
+        'phone.extension'           => '<strong>Extension de Teléfono</strong>',
     ],
 ];
