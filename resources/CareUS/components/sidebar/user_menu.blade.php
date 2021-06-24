@@ -28,9 +28,9 @@
             class="text-sm text-left {{ request()->routeIs('users.profile') ? 'text-primary-100' : 'text-primary-400' }} hover:text-primary-500 transform duration-150 ease-in-out">
             <i class="w-4 text-xs fas fa-user-cog"></i>
             @empty(auth()->user()->persona->first_name)
-            {!! __('<strong>:name</strong>\'s settings', ['name' => auth()->user()->email]) !!}
+            {!! __('<strong>:name</strong>\'s profile', ['name' => auth()->user()->email]) !!}
             @else
-            {!! __('<strong>:name</strong>\'s settings', ['name' => auth()->user()->persona->first_name]) !!}
+            {!! __('<strong>:name</strong>\'s profile', ['name' => auth()->user()->persona->first_name]) !!}
             @endempty
         </a>
     </div>

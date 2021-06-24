@@ -33,7 +33,7 @@
         </p>
         <form method="POST" action="{{ route('logout') }}" class="mt-3 md:mt-0">
             @csrf
-            <a class="duration-150 ease-in-out transform text-primary-400 hover:text-primary-500"
+            <a class="text-sm duration-150 ease-in-out transform text-primary-400 hover:text-primary-500"
                 href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
                 <i class="mr-1 fa fa-sign-out-alt"></i>{{ __('Log Out') }}
             </a>
