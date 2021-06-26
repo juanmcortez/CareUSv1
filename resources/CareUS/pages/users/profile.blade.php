@@ -190,7 +190,7 @@
                         <i class="mr-1 fa fa-save"></i>{{ __('Update') }}
                     </x-button>
                     <x-button type="button" class="bg-red-500 hover:bg-red-700"
-                        onclick="document.location.href='{{ route('dashboard') }}';">
+                        onclick="document.location.href='{{ route('dashboard.index') }}';">
                         <i class="mr-1 fa fa-times"></i>{{ __('Cancel') }}
                     </x-button>
                 </div>
