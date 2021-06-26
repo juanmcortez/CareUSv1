@@ -7,11 +7,11 @@
     <div class="w-3/12 mr-2">
         <x-label for="month" :value="__('Birthdate')" />
         <div class="flex flex-row items-center justify-between w-full">
-            <x-select id="month" class="block w-full mt-2 mr-2" name="persona[birthdate][month]" selected="{{ $month }}"
+            <x-select id="month" class="block w-full mt-1 mr-2" name="persona[birthdate][month]" selected="{{ $month }}"
                 :options="$monthOptions" />
-            <x-select id="day" class="block w-full mt-2 mr-2" name="persona[birthdate][day]" selected="{{ $day }}"
+            <x-select id="day" class="block w-full mt-1 mr-2" name="persona[birthdate][day]" selected="{{ $day }}"
                 :options="$dayOptions" />
-            <x-select id="year" class="block w-full mt-2" name="persona[birthdate][year]" selected="{{ $year }}"
+            <x-select id="year" class="block w-full mt-1" name="persona[birthdate][year]" selected="{{ $year }}"
                 :options="$yearOptions" />
         </div>
     </div>

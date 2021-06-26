@@ -48,26 +48,7 @@
                 zip="{{ auth()->user()->persona->address->zip }}"
                 country="{{ auth()->user()->persona->address->country }}" :country_options="$lists['countries']" />
 
-            <div class="flex flex-row items-center justify-between w-full mt-10">
-                <div class="w-3/12 mr-2">
-                    <x-label for="username"
-                        :value="__('<strong>Created on:</strong> :date', ['date' => auth()->user()->created_at])" />
-                </div>
-                <div class="w-3/12">&nbsp;</div>
-                <div class="w-4/12 mr-2">
-                    <x-label for="username"
-                        :value="__('<strong>Updated on:</strong> :date', ['date' => auth()->user()->persona->updated_at])" />
-                </div>
-                <div class="flex flex-row items-center justify-around w-2/12">
-                    <x-button class="bg-green-500 hover:bg-green-700">
-                        <i class="mr-1 fa fa-save"></i>{{ __('Update') }}
-                    </x-button>
-                    <x-button type="button" class="bg-red-500 hover:bg-red-700"
-                        onclick="document.location.href='{{ route('dashboard.index') }}';">
-                        <i class="mr-1 fa fa-times"></i>{{ __('Cancel') }}
-                    </x-button>
-                </div>
-            </div>
+            <x-user.footer cancel_route="{{ route('dashboard.index') }}" created updated />
 
         </form>
     </div>
