@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\UserRequest;
 use App\Models\Users\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +23,37 @@ class UserController extends Controller
         $title = __(":name profile", ['name' => Auth::user()->persona->formated_name]);
         $description = __(":name profile", ['name' => Auth::user()->persona->formated_name]);
 
-        return view('pages.users.profile', compact('title', 'description'));
+        $lists['states'] = [
+            ['value' => 'CBA', 'title' => 'Córdoba'],
+            ['value' => 'BSAS', 'title' => 'Buenos Aires'],
+        ];
+        $lists['countries'] = [
+            ['value' => 'AR', 'title' => 'Argentina'],
+            ['value' => 'US', 'title' => 'United States'],
+        ];
+        $lists['languages'] = [
+            ['value' => 'en', 'title' => 'English'],
+            ['value' => 'es', 'title' => 'Español'],
+            ['value' => 'fr', 'title' => 'Français'],
+        ];
+        // Days filled array
+        for ($i = 1; $i <= 31; $i++) {
+            $default = false;
+            $lists['days'][] = ['value' => $i, 'title' => $i, 'default' => $default];
+        }
+        // Months filled array
+        for ($i = 2; $i <= 13; $i++) {
+            $default = false;
+            $lists['months'][] = ['value' => ($i - 1), 'title' => date('M.', strtotime('00-' . $i . '-0000')), 'default' => $default];
+        }
+        // Years filled array
+        $initYear = date('Y', strtotime('-110 years'));
+        for ($i = $initYear; $i <= date('Y'); $i++) {
+            ($i == date('Y', strtotime('-50 years'))) ? $default = true : $default = false;
+            $lists['years'][] = ['value' => $i, 'title' => $i, 'default' => $default];
+        }
+
+        return view('pages.users.profile', compact('title', 'description', 'lists'));
     }
 
     /**
@@ -97,6 +128,9 @@ class UserController extends Controller
                 $data['persona']['profile_photo'] = env('USR_FILE_LOC') . DIRECTORY_SEPARATOR . $filename;
             }
         }
+
+        // Join birthdate
+        $data['persona']['birthdate'] = Carbon::createFromDate($data['persona']['birthdate']['year'], $data['persona']['birthdate']['month'], $data['persona']['birthdate']['day'])->format(config('app.dbdateformat'));
 
         // Update models
         $user = User::findOrFail(Auth::user()->id);

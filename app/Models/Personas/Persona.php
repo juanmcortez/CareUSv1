@@ -85,33 +85,6 @@ class Persona extends Model
 
 
     /**
-     * Birthdate Mutator
-     *
-     * @param string $value
-     * @return string
-     */
-    public function setBirthdateAttribute($value)
-    {
-        // Translate the date from current lang to english.
-        $newvalue = str_replace('.', '', Carbon::translateTimeString($value, Lang::locale(), config('app.locale')));
-        // Create from translated
-        $this->attributes['birthdate'] = Carbon::createFromLocaleFormat(config('app.dateformat'), Lang::locale(), $newvalue)->format(config('app.dbdateformat'));
-    }
-
-
-    /**
-     * Birthdate Accesor
-     *
-     * @param string $value
-     * @return string
-     */
-    public function getBirthdateAttribute($value)
-    {
-        return str_replace('.', '', ucfirst(Carbon::parse($value)->translatedFormat(config('app.dateformat'))));
-    }
-
-
-    /**
      * Updated at Accesor
      *
      * @param string $value
