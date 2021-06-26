@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\StatsController;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,12 @@ require __DIR__ . '/auth.php';
 
 // Protected routes with authorization
 Route::middleware(['auth'])->group(function () {
+
+    /* ***** Stats / Dashboard ***** */
+    Route::name('dashboard.')->group(function () {
+        Route::get('/', [StatsController::class, 'index'])->name('index');
+        Route::get('/dashboard', [StatsController::class, 'index'])->name('index');
+    });
 
     /* ***** Patient routes ***** */
     Route::prefix('patients')->name('patients.')->group(function () {
@@ -51,14 +58,6 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/lists', [UserController::class, 'index'])->name('lists');
         });
     });
-
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('home');
-
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware(['auth'])->name('dashboard');
 
     /* **** Temp routes ***** */
 });
