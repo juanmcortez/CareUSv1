@@ -3,22 +3,26 @@
 
     <ul class="flex flex-row items-center justify-center w-full py-3 md:flex-row">
         <li class="px-6">
-            <a href="{{ route('home') }}" class="transition-colors duration-150 ease-in-out hover:text-primary-800">
+            <a href="{{ route('dashboard.index') }}"
+                class="transition-colors duration-150 ease-in-out hover:text-primary-800">
                 <i class="fab fa-facebook-f"></i>
             </a>
         </li>
         <li class="px-6">
-            <a href="{{ route('home') }}" class="transition-colors duration-150 ease-in-out hover:text-primary-800">
+            <a href="{{ route('dashboard.index') }}"
+                class="transition-colors duration-150 ease-in-out hover:text-primary-800">
                 <i class="fab fa-twitter"></i>
             </a>
         </li>
         <li class="px-6">
-            <a href="{{ route('home') }}" class="transition-colors duration-150 ease-in-out hover:text-primary-800">
+            <a href="{{ route('dashboard.index') }}"
+                class="transition-colors duration-150 ease-in-out hover:text-primary-800">
                 <i class="fab fa-instagram"></i>
             </a>
         </li>
         <li class="px-6">
-            <a href="{{ route('home') }}" class="transition-colors duration-150 ease-in-out hover:text-primary-800">
+            <a href="{{ route('dashboard.index') }}"
+                class="transition-colors duration-150 ease-in-out hover:text-primary-800">
                 <i class="fab fa-linkedin-in"></i>
             </a>
         </li>

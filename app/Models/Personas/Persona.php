@@ -4,9 +4,11 @@ namespace App\Models\Personas;
 
 use App\Models\Personas\Address;
 use App\Models\Users\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Lang;
 
 class Persona extends Model
 {
@@ -24,6 +26,7 @@ class Persona extends Model
         'middle_name',
         'last_name',
         'birthdate',
+        'language',
         'profile_photo',
     ];
 
@@ -60,7 +63,7 @@ class Persona extends Model
      * @var array
      */
     protected $casts = [
-        'birthdate' => 'datetime:Y-m-d',
+        'birthdate' => 'date:Y-m-d',
         'updated_at' => 'datetime:Y-m-d H:i',
     ];
 
@@ -78,6 +81,18 @@ class Persona extends Model
             $formated = $this->last_name . ', ' . $this->first_name;
         }
         return $formated;
+    }
+
+
+    /**
+     * Updated at Accesor
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getUpdatedAtAttribute($value)
+    {
+        return ucfirst(Carbon::parse($value)->translatedFormat(config('app.updateformat')));
     }
 
 
