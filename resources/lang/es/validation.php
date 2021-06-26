@@ -173,7 +173,9 @@ return [
         'persona.first_name'        => '<strong>Primer Nombre</strong>',
         'persona.middle_name'       => '<strong>Segundo Nombre</strong>',
         'persona.last_name'         => '<strong>Apellido</strong>',
-        'persona.birthdate'         => '<strong>Fecha Nacimiento</strong>',
+        'persona.birthdate.month'   => '<strong>Fecha Nacimiento - Mes</strong>',
+        'persona.birthdate.date'    => '<strong>Fecha Nacimiento - Día</strong>',
+        'persona.birthdate.day'     => '<strong>Fecha Nacimiento - Año</strong>',
         'persona.profile_photo'     => '<strong>Foto de Perfil</strong>',
 
         'address.street'            => '<strong>Calle</strong>',

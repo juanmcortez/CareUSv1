@@ -159,7 +159,9 @@ return [
         'persona.first_name'        => '<strong>First name</strong>',
         'persona.middle_name'       => '<strong>Middle name</strong>',
         'persona.last_name'         => '<strong>Last name</strong>',
-        'persona.birthdate'         => '<strong>Birthdate</strong>',
+        'persona.birthdate.month'   => '<strong>Birthdate - Month</strong>',
+        'persona.birthdate.day'     => '<strong>Birthdate - Day</strong>',
+        'persona.birthdate.year'    => '<strong>Birthdate - Year</strong>',
         'persona.profile_photo'     => '<strong>Profile photo</strong>',
 
         'address.street'            => '<strong>Street</strong>',

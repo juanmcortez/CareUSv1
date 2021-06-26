@@ -740,5 +740,9 @@
     "Reports": "Reportes",
     ":name profile": "Perfíl de :name",
     "Patient's List": "Lista de Pacientes",
-    "<strong>:name</strong> profile, updated successfully.": "Perfíl de <strong>:name</strong> actualizado correctamente."
+    "<strong>:name</strong> profile, updated successfully.": "Perfíl de <strong>:name</strong> actualizado correctamente.",
+    "Jan.": "Ene.",
+    "Apr.": "Abr.",
+    "Aug.": "Ago.",
+    "Dec.": "Dic."
 }
