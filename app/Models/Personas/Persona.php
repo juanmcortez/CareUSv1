@@ -2,13 +2,13 @@
 
 namespace App\Models\Personas;
 
+use App\Models\Patients\Patient;
 use App\Models\Personas\Address;
 use App\Models\Users\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Lang;
 
 class Persona extends Model
 {
@@ -43,6 +43,7 @@ class Persona extends Model
         'deleted_at',
         'created_at',
         'user',
+        'patient',
     ];
 
 
@@ -97,6 +98,24 @@ class Persona extends Model
 
 
     /**
+     * Birthdate Accesor
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getBirthdateAttribute($value)
+    {
+        if ($this->owner_type === 'user') {
+            // If we are seeing the user edit screen show the regular value
+            return $value;
+        } else {
+            // The formated value needs to be shown in other screens
+            return str_replace('.', '', ucfirst(Carbon::parse($value)->translatedFormat(config('app.dateformat'))));
+        }
+    }
+
+
+    /**
      * User - Persona model relationship.
      * This function will retrieve the relationship data.
      * There can be only one persona model per user.
@@ -105,7 +124,20 @@ class Persona extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class, 'id', 'owner_id')->withDefault();
+        return $this->belongsTo(User::class, 'owner_id', 'id')->withDefault();
+    }
+
+
+    /**
+     * Patient - Persona model relationship.
+     * This function will retrieve the relationship data.
+     * There can be only one persona model per patient.
+     *
+     * @return Patient
+     */
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'owner_id', 'patID')->withDefault();
     }
 
 
