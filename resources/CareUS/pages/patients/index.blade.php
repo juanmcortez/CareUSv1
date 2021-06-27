@@ -25,21 +25,37 @@
             <tbody>
                 @foreach ($personas as $persona)
                 <tr>
-                    <td>{{ $persona->profile_photo }}</td>
+                    <td class="text-center">
+                        @empty($persona->profile_photo)
+                        <i class="text-3xl fas fa-user-circle text-primary-700"
+                            title="{{ $persona->formated_name }}"></i>
+                        @else
+                        <img class="w-8 h-8 mx-auto border-2 rounded-full border-primary-500"
+                            alt="{{ $persona->formated_name }}" src="{{ secure_asset($persona->profile_photo) }}" />
+                        @endempty
+                    </td>
                     <td>{{ $persona->formated_name }}</td>
                     <td>{{ $persona->birthdate }}</td>
                     <td>{{ $persona->phone->first()->formated_phone }}</td>
                     <td>{{ $persona->patient->patID }}</td>
                     <td>{{ $persona->patient->externalID }}</td>
                     <td>{{ $persona->patient->patient_level_accession }}</td>
-                    <td>
+                    <td class="text-center">
                         <a href="{{ route('patients.show', ['patient' => $persona->patient->patID]) }}">
                             <i class="fa fa-eye"></i>
                         </a>
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="8">&nbsp;</td>
+                </tr>
                 @endforeach
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="8">{{ $personas->links() }}</td>
+                </tr>
+            </tfoot>
         </table>
     </div>
     {{-- Page content --}}
