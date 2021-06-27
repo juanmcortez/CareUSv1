@@ -23,7 +23,7 @@ class PatientController extends Controller
             ->orderBy('first_name')
             ->orderBy('middle_name')
             ->where('owner_type', 'patient')
-            ->get();
+            ->paginate(25);
 
         return view('pages.patients.index', compact('title', 'description', 'personas'));
     }
@@ -57,8 +57,8 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        $title = __(":name Ledger", ["name" => $patient->persona->formated_name]);
-        $description = __(":name Ledger", ["name" => $patient->persona->formated_name]);
+        $title = __(":name's Ledger", ["name" => $patient->persona->last_name . ', ' . $patient->persona->first_name]);
+        $description = __(":name's Ledger", ["name" => $patient->persona->last_name . ', ' . $patient->persona->first_name]);
 
         return view('pages.patients.show', compact('title', 'description', 'patient'));
     }
