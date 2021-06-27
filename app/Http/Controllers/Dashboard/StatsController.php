@@ -16,7 +16,7 @@ class StatsController extends Controller
     public function index()
     {
         $title = __("Dashboard");
-        $description = __("Statistics about your company progress");
+        $description = __("Statistics about your practice.");
 
         return view('pages.dashboard.index', compact('title', 'description'));
     }
