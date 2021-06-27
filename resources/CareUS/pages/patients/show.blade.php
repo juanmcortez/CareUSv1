@@ -18,26 +18,7 @@
 
     {{-- Page content --}}
     <div class="w-full p-6 md:px-12 text-cemter">
-
-        <table class="w-full">
-            <tbody>
-                @foreach ($personas as $persona)
-                <tr>
-                    <td>{{ $persona->profile_photo }}</td>
-                    <td>{{ $persona->formated_name }}</td>
-                    <td>{{ $persona->birthdate }}</td>
-                    <td>{{ $persona->patient->patID }}</td>
-                    <td>{{ $persona->patient->externalID }}</td>
-                    <td>{{ $persona->patient->patient_level_accession }}</td>
-                    <td>
-                        <a href="{{ route('patients.show', ['patient' => $persona->patient->patID]) }}">
-                            <i class="fa fa-eye"></i>
-                        </a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        {{ $patient }}
     </div>
     {{-- Page content --}}
 </x-careus-layout>

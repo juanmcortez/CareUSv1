@@ -4,7 +4,8 @@
         src="{{ secure_asset(auth()->user()->persona->profile_photo) }}"
         class="mx-auto mb-5 border-4 rounded-full h-28 w-28 border-primary-400" />
     @else
-    <div class="mx-auto mb-5 border-4 rounded-full h-28 w-28 text-primary-400 bg-primary-200 border-primary-400">
+    <div
+        class="mx-auto mb-5 text-center border-4 rounded-full h-28 w-28 text-primary-400 bg-primary-200 border-primary-400">
         <i class="mt-1 text-8xl fa fa-user-circle"></i>
     </div>
     @endif

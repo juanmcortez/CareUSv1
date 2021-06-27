@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\StatsController;
+use App\Http\Controllers\Patients\PatientController;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,16 +22,14 @@ require __DIR__ . '/auth.php';
 Route::middleware(['auth'])->group(function () {
 
     /* ***** Stats / Dashboard ***** */
-    Route::name('dashboard.')->group(function () {
+    Route::prefix('')->name('dashboard.')->group(function () {
         Route::get('/', [StatsController::class, 'index'])->name('index');
-        Route::get('/dashboard', [StatsController::class, 'index'])->name('index');
     });
 
     /* ***** Patient routes ***** */
     Route::prefix('patients')->name('patients.')->group(function () {
-        Route::get('list', function () {
-            return view('pages.patients.index');
-        })->name('list');
+        Route::get('/list', [PatientController::class, 'index'])->name('list');
+        Route::get('/{patient}', [PatientController::class, 'show'])->name('show');
     });
 
     /* ***** User routes ***** */
