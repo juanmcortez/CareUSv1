@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Patients;
 
 use App\Http\Controllers\Controller;
 use App\Models\Patients\Patient;
+use App\Models\Personas\Persona;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -15,7 +16,16 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
+        $title = __("Patient's list");
+        $description = __("Full list of available patients in your practice.");
+
+        $personas = Persona::orderBy('last_name')
+            ->orderBy('first_name')
+            ->orderBy('middle_name')
+            ->where('owner_type', 'patient')
+            ->get();
+
+        return view('pages.patients.index', compact('title', 'description', 'personas'));
     }
 
     /**
@@ -47,7 +57,10 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        //
+        $title = __(":name Ledger", ["name" => $patient->persona->formated_name]);
+        $description = __(":name Ledger", ["name" => $patient->persona->formated_name]);
+
+        return view('pages.patients.show', compact('title', 'description', 'patient'));
     }
 
     /**
