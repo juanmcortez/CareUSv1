@@ -1,7 +1,7 @@
 <x-careus-layout>
     {{-- Default blocks --}}
-    <x-slot name="title">{{ $title }}</x-slot>
-    <x-slot name="description">{{ $description }}</x-slot>
+    <x-slot name="title">{!! $title !!}</x-slot>
+    <x-slot name="description">{!! $description !!}</x-slot>
     <x-slot name="subheader">
         <h2
             class="flex flex-col items-start justify-center order-2 w-full px-6 mt-3 text-xl font-semibold leading-loose border-t md:px-0 md:mt-0 md:w-1/2 md:ml-12 md:text-2xl md:flex-row md:order-1 border-dark-50 md:border-t-0 md:items-center md:justify-start">
