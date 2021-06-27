@@ -732,7 +732,7 @@
     "Extended": "Detalles",
     "Postal Code": "Código Postal",
     "<strong>Created on:</strong> :date": "<strong>Creado:</strong> :date",
-    "<strong>Updated on:</strong> :date": "<strong>Actualizado:</strong> :date",
+    "<strong>Last updated on:</strong> :date": "<strong>Úlitma actualización:</strong> :date",
     "Patients": "Pacientes",
     "Billing": "Facturación",
     "Eligibility": "Elegibilidad",
