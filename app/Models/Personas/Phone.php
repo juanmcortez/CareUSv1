@@ -69,6 +69,21 @@ class Phone extends Model
 
 
     /**
+     * Return the formated phone of the persona
+     *
+     * @return string
+     */
+    public function getFormatedPhoneAttribute()
+    {
+        $formated = '+' . $this->intl_code . ' (' . $this->area_code . ') ' . $this->prefix . '-' . $this->line;
+        if (!empty($this->extension)) {
+            $formated .= ' ' . __('Ext.') . ' ' . $this->extension;
+        }
+        return $formated;
+    }
+
+
+    /**
      * Persona - Phone model relationship.
      * This function will retrieve the relationship data.
      * There can be only one phone model per persona.
