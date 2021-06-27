@@ -739,6 +739,18 @@
     "Appointments": "Rendez-vous",
     "Reports": "Rapports",
     ":name profile": "Profil de :name",
-    "Patient's List": "Liste des Patients",
-    "<strong>:name</strong> profile, updated successfully.": "Profil de <strong>:name</strong> mis à jour avec succès."
+    "Patient's list": "Liste des patients",
+    ":name's Ledger": "Le grand livre de :name",
+    "<strong>:name</strong> profile, updated successfully.": "Profil de <strong>:name</strong> mis à jour avec succès.",
+    "Feb.": "Fév.",
+    "Apr.": "Avr.",
+    "May.": "Mai.",
+    "Jun.": "Jui.",
+    "Jul.": "Jui.",
+    "Aug.": "Aoû.",
+    "Dec.": "Déc.",
+    "Print": "Imprimer",
+    "Excel export": "Exportation Excel",
+    "CSV export": "Exportation CSV",
+    "New Patient": "Nouveau Patient"
 }

@@ -739,10 +739,15 @@
     "Appointments": "Turnos",
     "Reports": "Reportes",
     ":name profile": "Perfíl de :name",
-    "Patient's List": "Lista de Pacientes",
+    "Patient's list": "Lista de pacientes",
+    ":name's Ledger": "Libro mayor de :name",
     "<strong>:name</strong> profile, updated successfully.": "Perfíl de <strong>:name</strong> actualizado correctamente.",
     "Jan.": "Ene.",
     "Apr.": "Abr.",
     "Aug.": "Ago.",
-    "Dec.": "Dic."
+    "Dec.": "Dic.",
+    "Print": "Imprimir",
+    "Excel export": "Exportar a Excel",
+    "CSV export": "Exportar a CSV",
+    "New Patient": "Nuevo Paciente"
 }
