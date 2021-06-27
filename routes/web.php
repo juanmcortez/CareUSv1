@@ -29,7 +29,7 @@ Route::middleware(['auth'])->group(function () {
     /* ***** Patient routes ***** */
     Route::prefix('patients')->name('patients.')->group(function () {
         Route::get('/list', [PatientController::class, 'index'])->name('list');
-        Route::get('/{patient}', [PatientController::class, 'show'])->name('show');
+        Route::get('/{patient}/ledger', [PatientController::class, 'show'])->name('show');
     });
 
     /* ***** User routes ***** */
