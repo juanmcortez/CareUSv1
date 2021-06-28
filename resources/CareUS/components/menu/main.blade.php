@@ -3,31 +3,31 @@
     <ul class="flex flex-row items-center justify-between w-full px-3 md:flex-row md:px-0">
         <li class="{{ (request()->routeIs('patients.*')) ? 'font-semibold' : '' }}">
             <a class="transition-colors duration-150 ease-in-out hover:text-dark-200"
-                href="{{ route('patients.list') }}">
+                href="{{ route('patient.list') }}">
                 {{ __('Patients') }}
             </a>
         </li>
         <li class="{{ (request()->routeIs('billing.*')) ? 'font-semibold' : '' }}">
             <a class="transition-colors duration-150 ease-in-out hover:text-dark-200"
-                href="{{ route('billings.index') }}">
+                href="{{ route('billing.index') }}">
                 {{ __('Billing') }}
             </a>
         </li>
         <li class="{{ (request()->routeIs('eligibility.*')) ? 'font-semibold' : '' }}">
             <a class="transition-colors duration-150 ease-in-out hover:text-dark-200"
-                href="{{ route('patients.list') }}">
+                href="{{ route('patient.list') }}">
                 {{ __('Eligibility') }}
             </a>
         </li>
         <li class="{{ (request()->routeIs('appointments.*')) ? 'font-semibold' : '' }}">
             <a class="transition-colors duration-150 ease-in-out hover:text-dark-200"
-                href="{{ route('appointments.index') }}">
+                href="{{ route('appointment.index') }}">
                 {{ __('Appointments') }}
             </a>
         </li>
         <li class="{{ (request()->routeIs('reports.*')) ? 'font-semibold' : '' }}">
             <a class="transition-colors duration-150 ease-in-out hover:text-dark-200"
-                href="{{ route('patients.list') }}">
+                href="{{ route('patient.list') }}">
                 {{ __('Reports') }}
             </a>
         </li>

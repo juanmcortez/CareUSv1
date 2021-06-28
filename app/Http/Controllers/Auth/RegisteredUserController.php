@@ -68,7 +68,7 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         // After registering, go to profile page.
-        return redirect(route('users.profile'));
+        return redirect(route('user.profile'));
 
         // return redirect(RouteServiceProvider::HOME);
     }

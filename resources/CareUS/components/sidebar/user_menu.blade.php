@@ -6,12 +6,12 @@
             <i class="w-4 text-xs fas fa-hospital"></i>
             {{ __('Practice') }}
         </a>
-        <a href="{{ route('insurances.index') }}"
+        <a href="{{ route('insurance.index') }}"
             class="mb-4 text-sm {{ request()->routeIs('insurances.*') ? 'text-primary-100' : 'text-primary-400' }} hover:text-primary-500 transform duration-150 ease-in-out">
             <i class="w-4 text-xs fas fa-briefcase-medical"></i>
             {{ __('Insurances') }}
         </a>
-        <a href="{{ route('codes.index') }}"
+        <a href="{{ route('code.index') }}"
             class="mb-4 text-sm {{ request()->routeIs('codes.*') ? 'text-primary-100' : 'text-primary-400' }} hover:text-primary-500 transform duration-150 ease-in-out">
             <i class="w-4 text-xs fas fa-clipboard-list"></i>
             {{ __('Codes') }}
@@ -24,7 +24,7 @@
     </div>
 
     <div class="flex flex-col w-full py-5 pl-5 text-left border-t border-secondary-800">
-        <a href="{{ route('users.profile') }}"
+        <a href="{{ route('user.profile') }}"
             class="text-sm text-left {{ request()->routeIs('users.profile') ? 'text-primary-100' : 'text-primary-400' }} hover:text-primary-500 transform duration-150 ease-in-out">
             <i class="w-4 text-xs fas fa-user-cog"></i>
             @empty(auth()->user()->persona->first_name)

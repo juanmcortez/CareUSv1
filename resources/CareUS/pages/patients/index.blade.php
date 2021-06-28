@@ -41,7 +41,7 @@
                     <td>{{ $persona->patient->externalID }}</td>
                     <td>{{ $persona->patient->patient_level_accession }}</td>
                     <td class="text-center">
-                        <a href="{{ route('patients.show', ['patient' => $persona->patient->patID]) }}">
+                        <a href="{{ route('patient.show', ['patient' => $persona->patient->patID]) }}">
                             <i class="fa fa-eye"></i>
                         </a>
                     </td>

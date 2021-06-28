@@ -139,7 +139,7 @@ class UserController extends Controller
         $user->persona->address->update($data['address']);
         $user->persona->phone->first()->update($data['phone']);
 
-        return redirect(route('users.profile'))
+        return redirect(route('user.profile'))
             ->with('success', __('<strong>:name</strong> profile, updated successfully.', ["name" => Auth::user()->persona->formated_name]));
     }
 

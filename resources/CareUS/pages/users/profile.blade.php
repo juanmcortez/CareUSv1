@@ -26,7 +26,7 @@
 
     {{-- Page content --}}
     <div class="w-full p-6 md:px-12 text-cemter">
-        <form method="POST" action="{{  route('users.profile.update') }}" enctype="multipart/form-data"
+        <form method="POST" action="{{  route('user.profile.update') }}" enctype="multipart/form-data"
             class="flex flex-col flex-wrap w-full">
             @csrf
             @method('PUT')
