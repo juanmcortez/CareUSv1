@@ -87,11 +87,4 @@ Route::middleware(['auth'])->group(function () {
             Route::get('', [SettingsController::class, 'index'])->name('list');
         });
     });
-
-    /* **** Temp routes ***** */
-});
-
-// Fall back route
-Route::fallback(function () {
-    //
 });
