@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/auth.php';
 
 // Protected routes with authorization
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 
     /* ***** Stats / Dashboard ***** */
     Route::prefix('')->name('dashboard.')->group(function () {

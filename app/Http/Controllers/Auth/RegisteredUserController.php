@@ -60,7 +60,8 @@ class RegisteredUserController extends Controller
                 'first_name'    => $request->first_name,
                 'middle_name'   => $request->middle_name,
                 'last_name'     => $request->last_name,
-                'birthdate'     => Carbon::now()->format(config('app.dateformat')),
+                'birthdate'     => Carbon::now()->subYears(30)->format(config('app.dbdateformat')),
+                'language'      => config('app.locale'),
             ]);
 
         event(new Registered($user));
@@ -69,7 +70,5 @@ class RegisteredUserController extends Controller
 
         // After registering, go to profile page.
         return redirect(route('user.profile'));
-
-        // return redirect(RouteServiceProvider::HOME);
     }
 }
