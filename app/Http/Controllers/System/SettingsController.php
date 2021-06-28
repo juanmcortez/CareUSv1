@@ -15,7 +15,10 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        //
+        $title = __(':name settings', ['name' => config('app.name')]);
+        $description = __("Configure the system to your needs.");
+
+        return view('pages.system.index', compact('title', 'description'));
     }
 
     /**

@@ -9,6 +9,7 @@ use App\Http\Controllers\Patients\PatientController;
 use App\Http\Controllers\Practices\CodeController;
 use App\Http\Controllers\Practices\PracticeController;
 use App\Http\Controllers\Reports\ReportController;
+use App\Http\Controllers\System\SettingsController;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -80,11 +81,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('master/list', [CodeController::class, 'index'])->name('index');
     });
 
-
-    /* **** Temp routes ***** */
+    /* **** CareUS routes ***** */
     Route::prefix('system')->name('careus.')->group(function () {
         Route::prefix('setting')->name('setting.')->group(function () {
-            Route::get('list', [UserController::class, 'index'])->name('list');
+            Route::get('', [SettingsController::class, 'index'])->name('list');
         });
     });
 
