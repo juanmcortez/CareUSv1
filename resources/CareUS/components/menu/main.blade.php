@@ -21,7 +21,7 @@
         </li>
         <li class="{{ (request()->routeIs('appointments.*')) ? 'font-semibold' : '' }}">
             <a class="transition-colors duration-150 ease-in-out hover:text-dark-200"
-                href="{{ route('patients.list') }}">
+                href="{{ route('appointments.index') }}">
                 {{ __('Appointments') }}
             </a>
         </li>

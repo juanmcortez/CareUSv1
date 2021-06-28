@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Appointments\AppointmentController;
 use App\Http\Controllers\Dashboard\StatsController;
 use App\Http\Controllers\Patients\PatientController;
 use App\Http\Controllers\Users\UserController;
@@ -23,13 +24,18 @@ Route::middleware(['auth'])->group(function () {
 
     /* ***** Stats / Dashboard ***** */
     Route::prefix('')->name('dashboard.')->group(function () {
-        Route::get('/', [StatsController::class, 'index'])->name('index');
+        Route::get('', [StatsController::class, 'index'])->name('index');
     });
 
     /* ***** Patient routes ***** */
     Route::prefix('patients')->name('patients.')->group(function () {
-        Route::get('/list', [PatientController::class, 'index'])->name('list');
-        Route::get('/{patient}/ledger', [PatientController::class, 'show'])->name('show');
+        Route::get('list', [PatientController::class, 'index'])->name('list');
+        Route::get('{patient}/ledger', [PatientController::class, 'show'])->name('show');
+    });
+
+    /* ***** Appointments routes ***** */
+    Route::prefix('appointments')->name('appointments.')->group(function () {
+        Route::get('list', [AppointmentController::class, 'index'])->name('index');
     });
 
     /* ***** User routes ***** */
@@ -41,20 +47,20 @@ Route::middleware(['auth'])->group(function () {
 
     /* **** Temp routes ***** */
     Route::prefix('codes')->name('codes.')->group(function () {
-        Route::get('/list', [UserController::class, 'index'])->name('index');
+        Route::get('list', [UserController::class, 'index'])->name('index');
     });
 
     Route::prefix('insurances')->name('insurances.')->group(function () {
-        Route::get('/list', [UserController::class, 'index'])->name('index');
+        Route::get('list', [UserController::class, 'index'])->name('index');
     });
 
     Route::prefix('practice')->name('practice.')->group(function () {
-        Route::get('/settings', [UserController::class, 'index'])->name('index');
+        Route::get('settings', [UserController::class, 'index'])->name('index');
     });
 
     Route::prefix('system')->name('careus.')->group(function () {
         Route::prefix('settings')->name('settings.')->group(function () {
-            Route::get('/lists', [UserController::class, 'index'])->name('lists');
+            Route::get('lists', [UserController::class, 'index'])->name('lists');
         });
     });
 

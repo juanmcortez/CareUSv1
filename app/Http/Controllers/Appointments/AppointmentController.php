@@ -15,7 +15,10 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        $title = __("Appointments List");
+        $description = __("Full list of available appointments in your practice.");
+
+        return view('pages.appointments.index', compact('title', 'description'));
     }
 
     /**
