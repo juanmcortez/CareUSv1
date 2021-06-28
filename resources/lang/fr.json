@@ -752,5 +752,10 @@
     "Print": "Imprimer",
     "Excel export": "Exportation Excel",
     "CSV export": "Exportation CSV",
-    "New Patient": "Nouveau Patient"
+    "New Patient": "Nouveau Patient",
+    "A verification link has been sent to the email address you provided.": "Un lien de vérification a été envoyé à l'adresse e-mail que vous avez fournie.",
+    "Verified e-mail address! Thank You.": "Adresse e-mail vérifiée! Merci.",
+    "Click here for e-mail verification!": "Cliquez ici pour la vérification de l'e-mail!",
+    "Thanks for signing up! Please verify your email address by": "Merci pour votre inscription! Vérifiez votre adresse e-mail en cliquant sur",
+    "clicking on the <strong>red box</strong> next to it, to receive an email from us.": "la <strong>case rouge</strong> à côté de celui-ci, pour recevoir un email de notre part."
 }
