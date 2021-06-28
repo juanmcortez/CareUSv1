@@ -15,7 +15,10 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $title = __("Insurance Companies list");
+        $description = __("Control the insurances in your practice.");
+
+        return view('pages.insurances.index', compact('title', 'description'));
     }
 
     /**

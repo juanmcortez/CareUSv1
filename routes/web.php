@@ -4,6 +4,7 @@ use App\Http\Controllers\Appointments\AppointmentController;
 use App\Http\Controllers\Billings\BillingController;
 use App\Http\Controllers\Dashboard\StatsController;
 use App\Http\Controllers\Eligibilities\EligibilityController;
+use App\Http\Controllers\Insurances\CompanyController;
 use App\Http\Controllers\Patients\PatientController;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('list', [AppointmentController::class, 'index'])->name('index');
     });
 
+    /* ***** Insurance routes ***** */
+    Route::prefix('insurance')->name('insurance.')->group(function () {
+        Route::get('list', [CompanyController::class, 'index'])->name('index');
+    });
+
     /* ***** User routes ***** */
     Route::prefix('user')->name('user.')->group(function () {
         Route::get('profile', [UserController::class, 'index'])->name('profile');
@@ -59,10 +65,6 @@ Route::middleware(['auth'])->group(function () {
 
     /* **** Temp routes ***** */
     Route::prefix('code')->name('code.')->group(function () {
-        Route::get('list', [UserController::class, 'index'])->name('index');
-    });
-
-    Route::prefix('insurance')->name('insurance.')->group(function () {
         Route::get('list', [UserController::class, 'index'])->name('index');
     });
 
