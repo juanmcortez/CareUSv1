@@ -15,7 +15,10 @@ class PracticeController extends Controller
      */
     public function index()
     {
-        //
+        $title = __("Practice list");
+        $description = __("Control the practices in your company.");
+
+        return view('pages.practices.index', compact('title', 'description'));
     }
 
     /**
