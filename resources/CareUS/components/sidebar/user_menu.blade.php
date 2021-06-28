@@ -34,19 +34,4 @@
             @endempty
         </a>
     </div>
-
-    {{--
-<div class="flex flex-col w-full py-5 border-t border-gunmetal-400">
-    <form method="POST" action="{{ route('logout') }}" class="text-sm">
-    @csrf
-    <span class="mr-3 text-xs text-gunmetal-400">
-        {{ __('Last login: :date', ['date' => date('M d, Y')]) }}
-    </span>
-    <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"
-        class="text-sm text-primary-400 hover:text-primary-600">
-        {{ __('Log Out') }}
-    </a>
-    </form>
-</div>
---}}
 </div>

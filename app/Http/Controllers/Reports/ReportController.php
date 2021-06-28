@@ -15,7 +15,10 @@ class ReportController extends Controller
      */
     public function index()
     {
-        //
+        $title = __("Payments and Adjustments to Charges by Date Entered");
+        $description = __("View different stats about your practice.");
+
+        return view('pages.reports.pacde', compact('title', 'description'));
     }
 
     /**

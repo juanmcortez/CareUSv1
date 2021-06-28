@@ -25,9 +25,9 @@
                 {{ __('Appointments') }}
             </a>
         </li>
-        <li class="{{ (request()->routeIs('reports.*')) ? 'font-semibold' : '' }}">
+        <li class="{{ (request()->routeIs('report.*')) ? 'font-semibold' : '' }}">
             <a class="transition-colors duration-150 ease-in-out hover:text-dark-200"
-                href="{{ route('patient.list') }}">
+                href="{{ route('report.index') }}">
                 {{ __('Reports') }}
             </a>
         </li>

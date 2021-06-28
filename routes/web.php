@@ -7,6 +7,7 @@ use App\Http\Controllers\Eligibilities\EligibilityController;
 use App\Http\Controllers\Insurances\CompanyController;
 use App\Http\Controllers\Patients\PatientController;
 use App\Http\Controllers\Practices\PracticeController;
+use App\Http\Controllers\Reports\ReportController;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,11 @@ Route::middleware(['auth'])->group(function () {
     /* ***** Appointment routes ***** */
     Route::prefix('appointment')->name('appointment.')->group(function () {
         Route::get('list', [AppointmentController::class, 'index'])->name('index');
+    });
+
+    /* ***** Reports routes ***** */
+    Route::prefix('report')->name('report.')->group(function () {
+        Route::get('payments-adjustments-charges/date-entered', [ReportController::class, 'index'])->name('index');
     });
 
     /* ***** Practice routes ***** */
