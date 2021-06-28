@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\StatsController;
 use App\Http\Controllers\Eligibilities\EligibilityController;
 use App\Http\Controllers\Insurances\CompanyController;
 use App\Http\Controllers\Patients\PatientController;
+use App\Http\Controllers\Practices\CodeController;
 use App\Http\Controllers\Practices\PracticeController;
 use App\Http\Controllers\Reports\ReportController;
 use App\Http\Controllers\Users\UserController;
@@ -74,12 +75,13 @@ Route::middleware(['auth'])->group(function () {
         Route::put('profile', [UserController::class, 'update'])->name('profile.update');
     });
 
-
-    /* **** Temp routes ***** */
+    /* ***** Codes routes ***** */
     Route::prefix('code')->name('code.')->group(function () {
-        Route::get('list', [UserController::class, 'index'])->name('index');
+        Route::get('master/list', [CodeController::class, 'index'])->name('index');
     });
 
+
+    /* **** Temp routes ***** */
     Route::prefix('system')->name('careus.')->group(function () {
         Route::prefix('setting')->name('setting.')->group(function () {
             Route::get('list', [UserController::class, 'index'])->name('list');

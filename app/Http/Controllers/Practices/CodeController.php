@@ -15,7 +15,10 @@ class CodeController extends Controller
      */
     public function index()
     {
-        //
+        $title = __("Codes Master list");
+        $description = __("Control the codes that affect your practice.");
+
+        return view('pages.practices.codes', compact('title', 'description'));
     }
 
     /**
