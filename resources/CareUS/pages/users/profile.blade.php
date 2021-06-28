@@ -31,7 +31,8 @@
             @csrf
             @method('PUT')
 
-            <x-user.usermail username="{{ auth()->user()->username }}" email="{{ auth()->user()->email }}" />
+            <x-user.usermail username="{{ auth()->user()->username }}" email="{{ auth()->user()->email }}"
+                verified="{{ auth()->user()->email_verified_at }}" />
 
             <x-persona.name last_name="{{ auth()->user()->persona->last_name }}"
                 first_name="{{ auth()->user()->persona->first_name }}"
