@@ -69,12 +69,12 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::prefix('practice')->name('practice.')->group(function () {
-        Route::get('settings', [UserController::class, 'index'])->name('index');
+        Route::get('setting', [UserController::class, 'index'])->name('index');
     });
 
     Route::prefix('system')->name('careus.')->group(function () {
-        Route::prefix('settings')->name('settings.')->group(function () {
-            Route::get('lists', [UserController::class, 'index'])->name('lists');
+        Route::prefix('setting')->name('setting.')->group(function () {
+            Route::get('lists', [UserController::class, 'index'])->name('list');
         });
     });
 

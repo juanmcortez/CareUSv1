@@ -7,16 +7,16 @@
             {{ __('Practice') }}
         </a>
         <a href="{{ route('insurance.index') }}"
-            class="mb-4 text-sm {{ request()->routeIs('insurances.*') ? 'text-primary-100' : 'text-primary-400' }} hover:text-primary-500 transform duration-150 ease-in-out">
+            class="mb-4 text-sm {{ request()->routeIs('insurance.*') ? 'text-primary-100' : 'text-primary-400' }} hover:text-primary-500 transform duration-150 ease-in-out">
             <i class="w-4 text-xs fas fa-briefcase-medical"></i>
             {{ __('Insurances') }}
         </a>
         <a href="{{ route('code.index') }}"
-            class="mb-4 text-sm {{ request()->routeIs('codes.*') ? 'text-primary-100' : 'text-primary-400' }} hover:text-primary-500 transform duration-150 ease-in-out">
+            class="mb-4 text-sm {{ request()->routeIs('code.*') ? 'text-primary-100' : 'text-primary-400' }} hover:text-primary-500 transform duration-150 ease-in-out">
             <i class="w-4 text-xs fas fa-clipboard-list"></i>
             {{ __('Codes') }}
         </a>
-        <a href="{{ route('careus.settings.lists') }}"
+        <a href="{{ route('careus.setting.list') }}"
             class="text-sm {{ request()->routeIs('careus.*') ? 'text-primary-100' : 'text-primary-400' }} hover:text-primary-500 transform duration-150 ease-in-out">
             <i class="w-4 text-xs fas fa-tools"></i>
             {!! __(':name settings', ['name' => 'Care<span class="font-semibold">US</span>']) !!}
@@ -25,7 +25,7 @@
 
     <div class="flex flex-col w-full py-5 pl-5 text-left border-t border-secondary-800">
         <a href="{{ route('user.profile') }}"
-            class="text-sm text-left {{ request()->routeIs('users.profile') ? 'text-primary-100' : 'text-primary-400' }} hover:text-primary-500 transform duration-150 ease-in-out">
+            class="text-sm text-left {{ request()->routeIs('user.profile') ? 'text-primary-100' : 'text-primary-400' }} hover:text-primary-500 transform duration-150 ease-in-out">
             <i class="w-4 text-xs fas fa-user-cog"></i>
             @empty(auth()->user()->persona->first_name)
             {!! __('<strong>:name</strong>\'s profile', ['name' => auth()->user()->email]) !!}

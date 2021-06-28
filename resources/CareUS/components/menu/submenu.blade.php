@@ -3,7 +3,7 @@
 'excel' => '',
 'csv' => '',
 ])
-@if(request()->routeIs('patients.list'))
+@if(request()->routeIs('patient.list'))
 <li>
     <a href="{{ route('patient.list') }}" title="{{ __('New Patient') }}"
         class="flex items-center justify-center w-10 h-10 ml-4 transition-colors duration-150 ease-in-out rounded-full shadow cursor-pointer bg-primary-400 text-primary-900 hover:bg-primary-900 hover:text-primary-400">
