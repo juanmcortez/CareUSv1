@@ -74,7 +74,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('system')->name('careus.')->group(function () {
         Route::prefix('setting')->name('setting.')->group(function () {
-            Route::get('lists', [UserController::class, 'index'])->name('list');
+            Route::get('list', [UserController::class, 'index'])->name('list');
         });
     });
 
