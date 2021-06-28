@@ -9,7 +9,7 @@
         </li>
         <li class="{{ (request()->routeIs('billing.*')) ? 'font-semibold' : '' }}">
             <a class="transition-colors duration-150 ease-in-out hover:text-dark-200"
-                href="{{ route('patients.list') }}">
+                href="{{ route('billings.index') }}">
                 {{ __('Billing') }}
             </a>
         </li>

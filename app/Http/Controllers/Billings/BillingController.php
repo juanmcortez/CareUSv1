@@ -15,7 +15,10 @@ class BillingController extends Controller
      */
     public function index()
     {
-        //
+        $title = __("Billing Manager");
+        $description = __("Control the billing in your practice.");
+
+        return view('pages.billings.index', compact('title', 'description'));
     }
 
     /**

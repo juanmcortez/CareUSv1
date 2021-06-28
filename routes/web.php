@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Appointments\AppointmentController;
+use App\Http\Controllers\Billings\BillingController;
 use App\Http\Controllers\Dashboard\StatsController;
 use App\Http\Controllers\Patients\PatientController;
 use App\Http\Controllers\Users\UserController;
@@ -28,29 +29,34 @@ Route::middleware(['auth'])->group(function () {
     });
 
     /* ***** Patient routes ***** */
-    Route::prefix('patients')->name('patients.')->group(function () {
+    Route::prefix('patient')->name('patient.')->group(function () {
         Route::get('list', [PatientController::class, 'index'])->name('list');
         Route::get('{patient}/ledger', [PatientController::class, 'show'])->name('show');
     });
 
-    /* ***** Appointments routes ***** */
-    Route::prefix('appointments')->name('appointments.')->group(function () {
+    /* ***** Billing routes ***** */
+    Route::prefix('billing')->name('billing.')->group(function () {
+        Route::get('manager', [BillingController::class, 'index'])->name('index');
+    });
+
+    /* ***** Appointment routes ***** */
+    Route::prefix('appointment')->name('appointment.')->group(function () {
         Route::get('list', [AppointmentController::class, 'index'])->name('index');
     });
 
     /* ***** User routes ***** */
-    Route::prefix('users')->name('users.')->group(function () {
+    Route::prefix('user')->name('user.')->group(function () {
         Route::get('profile', [UserController::class, 'index'])->name('profile');
         Route::put('profile', [UserController::class, 'update'])->name('profile.update');
     });
 
 
     /* **** Temp routes ***** */
-    Route::prefix('codes')->name('codes.')->group(function () {
+    Route::prefix('code')->name('code.')->group(function () {
         Route::get('list', [UserController::class, 'index'])->name('index');
     });
 
-    Route::prefix('insurances')->name('insurances.')->group(function () {
+    Route::prefix('insurance')->name('insurance.')->group(function () {
         Route::get('list', [UserController::class, 'index'])->name('index');
     });
 
