@@ -15,7 +15,10 @@ class EligibilityController extends Controller
      */
     public function index()
     {
-        //
+        $title = __("Eligibility Dashboard");
+        $description = __("Control the eligibilities in your practice.");
+
+        return view('pages.eligibilities.index', compact('title', 'description'));
     }
 
     /**

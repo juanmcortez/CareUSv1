@@ -15,7 +15,7 @@
         </li>
         <li class="{{ (request()->routeIs('eligibility.*')) ? 'font-semibold' : '' }}">
             <a class="transition-colors duration-150 ease-in-out hover:text-dark-200"
-                href="{{ route('patient.list') }}">
+                href="{{ route('eligiblity.index') }}">
                 {{ __('Eligibility') }}
             </a>
         </li>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Appointments\AppointmentController;
 use App\Http\Controllers\Billings\BillingController;
 use App\Http\Controllers\Dashboard\StatsController;
+use App\Http\Controllers\Eligibilities\EligibilityController;
 use App\Http\Controllers\Patients\PatientController;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,11 @@ Route::middleware(['auth'])->group(function () {
     /* ***** Billing routes ***** */
     Route::prefix('billing')->name('billing.')->group(function () {
         Route::get('manager', [BillingController::class, 'index'])->name('index');
+    });
+
+    /* ***** Eligiblity routes ***** */
+    Route::prefix('eligiblity')->name('eligiblity.')->group(function () {
+        Route::get('dashboard', [EligibilityController::class, 'index'])->name('index');
     });
 
     /* ***** Appointment routes ***** */
