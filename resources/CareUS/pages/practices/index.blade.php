@@ -12,7 +12,7 @@
             <ul
                 class="flex flex-row items-center justify-around w-full text-xs font-medium md:justify-end text-primary-300">
                 {{-- <li>{{ __('Subheader') }}</li> --}}
-                <x-menu.submenu csv />
+                <x-menu.submenu verified="{{ auth()->user()->email_verified_at }}" csv />
             </ul>
         </div>
     </x-slot>

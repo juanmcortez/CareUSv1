@@ -23,7 +23,7 @@
                 <li>
                     {!! __('<strong>Last updated on:</strong> :date', ['date' => $patient->persona->updated_at]) !!}
                 </li>
-                <x-menu.submenu />
+                <x-menu.submenu verified="{{ auth()->user()->email_verified_at }}" />
             </ul>
         </div>
     </x-slot>

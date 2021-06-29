@@ -2,6 +2,7 @@
 'download' => '',
 'excel' => '',
 'csv' => '',
+'verified' => '',
 ])
 @if(request()->routeIs('patient.list'))
 <li>
@@ -38,6 +39,20 @@
     </a>
 </li>
 @endif
+
+@empty($verified)
+<li>
+    <form method="POST" action="{{ route('verification.send') }}">
+        @csrf
+        <x-button
+            class="relative flex items-center justify-center w-10 h-10 ml-4 transition-colors duration-150 ease-in-out bg-red-600 rounded-full shadow outline-none cursor-pointer text-red-50 hover:bg-red-50 hover:text-red-600"
+            title="{{ __('Click here for e-mail verification!') }}">
+            <i class="absolute text-sm fas fa-envelope animate-ping"></i>
+            <i class="absolute text-sm fas fa-envelope"></i>
+        </x-button>
+    </form>
+</li>
+@endempty
 
 <li>
     <a href="{{ route('patient.list') }}" title="{{ __('Print') }}"
