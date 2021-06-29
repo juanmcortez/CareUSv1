@@ -1,6 +1,15 @@
 <?php
 
+use App\Http\Controllers\Appointments\AppointmentController;
+use App\Http\Controllers\Billings\BillingController;
 use App\Http\Controllers\Dashboard\StatsController;
+use App\Http\Controllers\Eligibilities\EligibilityController;
+use App\Http\Controllers\Insurances\CompanyController;
+use App\Http\Controllers\Patients\PatientController;
+use App\Http\Controllers\Practices\CodeController;
+use App\Http\Controllers\Practices\PracticeController;
+use App\Http\Controllers\Reports\ReportController;
+use App\Http\Controllers\System\SettingsController;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,51 +27,64 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/auth.php';
 
 // Protected routes with authorization
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['verified', 'auth'])->group(function () {
 
     /* ***** Stats / Dashboard ***** */
-    Route::name('dashboard.')->group(function () {
-        Route::get('/', [StatsController::class, 'index'])->name('index');
-        Route::get('/dashboard', [StatsController::class, 'index'])->name('index');
+    Route::prefix('')->name('dashboard.')->group(function () {
+        Route::get('', [StatsController::class, 'index'])->name('index');
     });
 
     /* ***** Patient routes ***** */
-    Route::prefix('patients')->name('patients.')->group(function () {
-        Route::get('list', function () {
-            return view('pages.patients.index');
-        })->name('list');
+    Route::prefix('patient')->name('patient.')->group(function () {
+        Route::get('list', [PatientController::class, 'index'])->name('list');
+        Route::get('{patient}/ledger', [PatientController::class, 'show'])->name('show');
+    });
+
+    /* ***** Billing routes ***** */
+    Route::prefix('billing')->name('billing.')->group(function () {
+        Route::get('manager', [BillingController::class, 'index'])->name('index');
+    });
+
+    /* ***** Eligiblity routes ***** */
+    Route::prefix('eligiblity')->name('eligiblity.')->group(function () {
+        Route::get('dashboard', [EligibilityController::class, 'index'])->name('index');
+    });
+
+    /* ***** Appointment routes ***** */
+    Route::prefix('appointment')->name('appointment.')->group(function () {
+        Route::get('list', [AppointmentController::class, 'index'])->name('index');
+    });
+
+    /* ***** Reports routes ***** */
+    Route::prefix('report')->name('report.')->group(function () {
+        Route::get('payments-adjustments-charges/date-entered', [ReportController::class, 'index'])->name('index');
+    });
+
+    /* ***** Practice routes ***** */
+    Route::prefix('practice')->name('practice.')->group(function () {
+        Route::get('setting', [PracticeController::class, 'index'])->name('index');
+    });
+
+    /* ***** Insurance routes ***** */
+    Route::prefix('insurance')->name('insurance.')->group(function () {
+        Route::get('list', [CompanyController::class, 'index'])->name('index');
     });
 
     /* ***** User routes ***** */
-    Route::prefix('users')->name('users.')->group(function () {
+    Route::prefix('user')->name('user.')->group(function () {
         Route::get('profile', [UserController::class, 'index'])->name('profile');
         Route::put('profile', [UserController::class, 'update'])->name('profile.update');
     });
 
-
-    /* **** Temp routes ***** */
-    Route::prefix('codes')->name('codes.')->group(function () {
-        Route::get('/list', [UserController::class, 'index'])->name('index');
+    /* ***** Codes routes ***** */
+    Route::prefix('code')->name('code.')->group(function () {
+        Route::get('master/list', [CodeController::class, 'index'])->name('index');
     });
 
-    Route::prefix('insurances')->name('insurances.')->group(function () {
-        Route::get('/list', [UserController::class, 'index'])->name('index');
-    });
-
-    Route::prefix('practice')->name('practice.')->group(function () {
-        Route::get('/settings', [UserController::class, 'index'])->name('index');
-    });
-
+    /* **** CareUS routes ***** */
     Route::prefix('system')->name('careus.')->group(function () {
-        Route::prefix('settings')->name('settings.')->group(function () {
-            Route::get('/lists', [UserController::class, 'index'])->name('lists');
+        Route::prefix('setting')->name('setting.')->group(function () {
+            Route::get('', [SettingsController::class, 'index'])->name('list');
         });
     });
-
-    /* **** Temp routes ***** */
-});
-
-// Fall back route
-Route::fallback(function () {
-    //
 });

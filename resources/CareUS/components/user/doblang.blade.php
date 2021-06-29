@@ -25,12 +25,12 @@
     @endisset
     @isset($fullName)
     <div class="flex flex-row items-center justify-start w-3/12">
-        @isset($profilePhoto)
+        @empty($profilePhoto)
+        <i class="mt-6 ml-3 mr-5 text-4xl fas fa-user-circle text-primary-700" title="{{ $fullName }}"></i>
+        @else
         <img class="w-12 h-12 mt-6 ml-3 mr-5 border-2 rounded-full border-primary-500" alt="{{ $fullName }}"
             src="{{ secure_asset($profilePhoto) }}" />
-        @else
-        <i class="mt-6 ml-3 mr-5 text-4xl fas fa-user-circle text-primary-700" title="{{ $fullName }}"></i>
-        @endisset
+        @endempty
         {{-- File upload --}}
         <div class="flex items-center justify-center w-full mt-6 mr-2">
             <label
