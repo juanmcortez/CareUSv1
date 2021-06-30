@@ -757,5 +757,11 @@
     "Verified e-mail address! Thank You.": "Adresse e-mail vérifiée! Merci.",
     "Click here for e-mail verification!": "Cliquez ici pour la vérification de l'e-mail!",
     "Your e-mail has been verified! Thank you.": "Votre mail a été vérifié! Merci.",
-    "Your e-mail is already verified! Thank you.": "Votre e-mail est déjà vérifié! Merci."
+    "Your e-mail is already verified! Thank you.": "Votre e-mail est déjà vérifié! Merci.",
+    "Patient": "Patient",
+    "Social Security": "Sécurité sociale",
+    "Accession #": "Accès #",
+    "Patient ID": "ID Patient",
+    "Patient Ext. ID": "ID Ext. Patient",
+    "Last Srv. Date": "Date Dernier Srv."
 }
