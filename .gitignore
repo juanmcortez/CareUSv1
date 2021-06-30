@@ -52,19 +52,19 @@ yarn-error.log
 
 # --------
 # My edits
-.github/
+# .github/
 public/
 
-/.github
+# /.github
 /public
 
-/.github/
+# /.github/
 /public/
 
-.github/*
+# .github/*
 public/*
 
-/.github/*
+# /.github/*
 /public/*
 
 /public/css
