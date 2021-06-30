@@ -2,13 +2,13 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
+use App\Models\Users\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class PasswordConfirmationTest extends TestCase
 {
-    use RefreshDatabase;
+    /*use RefreshDatabase;
 
     public function test_confirm_password_screen_can_be_rendered()
     {
@@ -40,5 +40,17 @@ class PasswordConfirmationTest extends TestCase
         ]);
 
         $response->assertSessionHasErrors();
+    }*/
+
+
+    public function test_user_can_access_password_confirm()
+    {
+        $user = User::factory()->create();
+
+        $response = $this->get('/');
+
+        $response->assertRedirect('/login');
+
+        $response = $this->actingAs($user)->get('/confirm-password');
     }
 }
