@@ -32,12 +32,17 @@ jobs:
         run: mkdir storage/app/public/fonts
       - name: Generate folder
         run: mkdir storage/app/public/fonts/vendor
+      - name: Generate folder
+        run: mkdir database/testing
 
       - name: Generate links
         run: php artisan storage:link
 
       - name: Build npm
         run: npm run production
+
+      - name: Create Test DB
+        run: touch database/testing/database.sqlite
 
       - name: Run Migrations
         run: php artisan migrate
