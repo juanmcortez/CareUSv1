@@ -40,12 +40,6 @@ jobs:
         run: npm run production
 
       - name: Run Migrations
-        # Set environment
-        env:
-          SESSION_DRIVER: array
-          DB_CONNECTION: sqlite
-          DB_DATABASE: ":memory:"
-
         run: php artisan migrate
 
       - name: Show dir
@@ -55,10 +49,4 @@ jobs:
 
       # Code quality
       - name: Execute tests (Unit and Feature tests) via PHPUnit
-        # Set environment
-        env:
-          SESSION_DRIVER: array
-          DB_CONNECTION: sqlite
-          DB_DATABASE: ":memory:"
-
         run: vendor/bin/phpunit
