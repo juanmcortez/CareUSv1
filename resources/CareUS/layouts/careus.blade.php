@@ -8,7 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Title / Description -->
-    <title>{{ isset($title) ? $title . ' - ' . config('app.name') : config('app.name') }}</title>
+    <title>
+        {{ isset($title) ? $title . ' - ' . config('app.name') . ' ' . config('app.version') : config('app.name') . ' ' . config('app.version') }}
+    </title>
     <meta name="description" content="{{ isset($description) ? $description : '' }}">
 
     <!-- Fonts -->
