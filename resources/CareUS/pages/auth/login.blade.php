@@ -1,9 +1,7 @@
 <x-careus-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-logo class="w-20 h-20 text-gray-500 fill-current" />
-            </a>
+            <x-logo class="w-20 h-20 text-gray-500 fill-current" />
         </x-slot>
 
         <!-- Session Status -->
@@ -24,18 +22,25 @@
             </div>
 
             <!-- Password -->
-            <div class="mt-4">
+            <div class="relative mt-4" x-data="{ show: true }">
                 <x-label for="password" :value="__('Password')" />
 
-                <x-input id="password" class="block w-full mt-1" type="password" name="password" required
-                    autocomplete="current-password" />
+                <input
+                    class="block w-full pr-10 mt-1 transition duration-150 ease-in-out shadow-sm border-primary-200 focus:border-primary-500 focus:ring-0 text-dark-400 focus:text-dark-600 placeholder-dark-200"
+                    :type="show ? 'password' : 'text'" name="password" required autocomplete="current-password"
+                    id="password" />
+                <div @click="show=! show"
+                    class="absolute inset-y-0 right-0 flex items-center pr-3 text-sm leading-5 cursor-pointer">
+                    <i class="mt-6 text-lg fa text-dark-300" :class=" show ? 'fa-eye' : 'fa-eye-slash' "
+                        :title=" show ? 'Show password' : 'Hide password' "></i>
+                </div>
             </div>
 
             <!-- Remember Me -->
             <div class="block mt-4">
                 <label for="remember_me" class="inline-flex items-center">
                     <input id="remember_me" type="checkbox"
-                        class="text-indigo-600 border-gray-300 rounded shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        class="border-gray-300 rounded shadow-sm cursor-pointer text-primary-600 focus:border-primary-300 focus:ring-0 focus:ring-primary-200"
                         name="remember">
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>

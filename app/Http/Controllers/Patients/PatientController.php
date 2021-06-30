@@ -23,7 +23,7 @@ class PatientController extends Controller
             ->orderBy('first_name')
             ->orderBy('middle_name')
             ->where('owner_type', 'patient')
-            ->paginate(25);
+            ->paginate(15);
 
         return view('pages.patients.index', compact('title', 'description', 'personas'));
     }

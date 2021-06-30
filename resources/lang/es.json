@@ -738,9 +738,6 @@
     "Eligibility": "Elegibilidad",
     "Appointments": "Turnos",
     "Reports": "Reportes",
-    ":name profile": "Perfíl de :name",
-    "Patient's list": "Lista de pacientes",
-    ":name's Ledger": "Libro mayor de :name",
     "<strong>:name</strong> profile, updated successfully.": "Perfíl de <strong>:name</strong> actualizado correctamente.",
     "Jan.": "Ene.",
     "Apr.": "Abr.",
@@ -760,5 +757,15 @@
     "Accession #": "Adhesión #",
     "Patient ID": "ID Paciente",
     "Patient Ext. ID": "ID Ext. Paciente",
-    "Last Srv. Date": "Últ. Fecha Serv."
+    "Last Srv. Date": "Últ. Fecha Serv.",
+    ":name profile": "Perfíl de :name",
+    "Patient's list": "Lista de Pacientes",
+    ":name's Ledger": "Libro Mayor de :name",
+    "Billing Manager": "Gestor de Facturación",
+    "Eligibility Dashboard": "Panel de Elegibilidad",
+    "Appointments List": "Lista de Turnos",
+    "Payments and Adjustments to Charges by Date Entered": "Pagos y Ajustes a los Cargos por Fecha de Ingreso",
+    "Practice list": "Lista de Prácticas",
+    "Insurance Companies list": "Lista de Compañías de Seguros",
+    "Codes Master list": "Lista Maestra de Códigos"
 }
