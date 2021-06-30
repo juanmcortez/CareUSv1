@@ -4,7 +4,7 @@
 
 ### Build / System Status
 
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/juanmcortez/CareUSv1) ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/juanmcortez/CareUSv1) ![David](https://img.shields.io/david/juanmcortez/CareUSv1)
+[![CareUSv1](https://github.com/juanmcortez/CareUSv1/actions/workflows/laravel_phpunit.yml/badge.svg)](https://github.com/juanmcortez/CareUSv1/actions/workflows/laravel_phpunit.yml) ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/juanmcortez/CareUSv1) ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/juanmcortez/CareUSv1) ![David](https://img.shields.io/david/juanmcortez/CareUSv1)
 
 ### Github activity
 
