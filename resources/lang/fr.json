@@ -738,9 +738,6 @@
     "Eligibility": "Admissibilité",
     "Appointments": "Rendez-vous",
     "Reports": "Rapports",
-    ":name profile": "Profil de :name",
-    "Patient's list": "Liste des patients",
-    ":name's Ledger": "Le grand livre de :name",
     "<strong>:name</strong> profile, updated successfully.": "Profil de <strong>:name</strong> mis à jour avec succès.",
     "Feb.": "Fév.",
     "Apr.": "Avr.",
@@ -763,5 +760,15 @@
     "Accession #": "Accès #",
     "Patient ID": "ID Patient",
     "Patient Ext. ID": "ID Ext. Patient",
-    "Last Srv. Date": "Date Dernier Srv."
+    ":name profile": "Profil de :name",
+    "Patient's list": "Liste des Patients",
+    ":name's Ledger": "Le Grand Livre de :name",
+    "Last Srv. Date": "Date Dernier Srv.",
+    "Billing Manager": "Gestionnaire de Facturation",
+    "Eligibility Dashboard": "Bord d'Éligibilité",
+    "Appointments List": "Liste des Rendez-vous",
+    "Payments and Adjustments to Charges by Date Entered": "Paiements et Ajustements des Frais par Date de Saisie",
+    "Practice list": "Liste de Pratiques",
+    "Insurance Companies list": "Liste des Compagnies d'Assurance",
+    "Codes Master list": "Liste Principale des Codes"
 }
