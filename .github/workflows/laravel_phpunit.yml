@@ -29,9 +29,8 @@ jobs:
         run: npm install
 
       - name: Generate folders
-        run: mkdir public/fonts
-      - name: Generate folders
-        run: mkdir public/fonts/vendor
+        run: mkdir storage/app/public/fonts
+        run: mkdir storage/app/public/fonts/vendor
 
       - name: Generate links
         run: php artisan storage:link
