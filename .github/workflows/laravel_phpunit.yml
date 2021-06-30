@@ -28,8 +28,9 @@ jobs:
       - name: Install npm dependencies
         run: npm install
 
-      - name: Generate folders
+      - name: Generate folder
         run: mkdir storage/app/public/fonts
+      - name: Generate folder
         run: mkdir storage/app/public/fonts/vendor
 
       - name: Generate links
