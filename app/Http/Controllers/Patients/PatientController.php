@@ -19,11 +19,11 @@ class PatientController extends Controller
         $title = __("Patient's list");
         $description = __("Full list of available patients in your practice.");
 
-        $personas = Persona::orderBy('last_name')
-            ->orderBy('first_name')
-            ->orderBy('middle_name')
-            ->where('owner_type', 'patient')
-            ->paginate(15);
+        // Don't use eager loading on a lage dataset. with() prevents it!
+        $personas = Persona::where('owner_type', 'patient')
+            ->orderByRaw('last_name ASC, first_name ASC, middle_name ASC')
+            ->with('patient', 'phone')
+            ->paginate(10);
 
         return view('pages.patients.index', compact('title', 'description', 'personas'));
     }
