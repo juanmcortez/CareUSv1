@@ -14,9 +14,9 @@ class CreatePatientsTable extends Migration
     public function up()
     {
         Schema::create('patients', function (Blueprint $table) {
-            $table->id('patID');
+            $table->id('patID')->index();
 
-            $table->string('externalID', 16)->nullable();
+            $table->string('externalID', 16)->nullable()->index();
             $table->string('patient_level_accession', 16)->nullable();
 
             $table->softDeletes();
