@@ -44,6 +44,8 @@ class Persona extends Model
         'created_at',
         'user',
         'patient',
+        'phone',
+        'address',
     ];
 
 
@@ -150,19 +152,19 @@ class Persona extends Model
      */
     public function address()
     {
-        return $this->hasOne(Address::class, 'id', 'owner_id')->where('owner_type', 'persona');
+        return $this->hasOne(Address::class, 'owner_id', 'id')->where('owner_type', 'persona');
     }
 
 
     /**
      * Persona - Phone model relationship.
      * This function will retrieve the relationship data.
-     * There can be only many phone models per persona.
+     * There can be many phone models per persona.
      *
      * @return Phone
      */
     public function phone()
     {
-        return $this->hasMany(Phone::class, 'id', 'owner_id')->where('owner_type', 'persona');
+        return $this->hasMany(Phone::class, 'owner_id', 'id')->where('owner_type', 'persona');
     }
 }

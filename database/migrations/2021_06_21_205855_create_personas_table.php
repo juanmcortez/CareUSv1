@@ -19,9 +19,9 @@ class CreatePersonasTable extends Migration
             $table->unsignedBigInteger('owner_id');
             $table->enum('owner_type', ['user', 'patient', 'contact', 'employer', 'subscriber', 'doctor'])->default('patient');
 
-            $table->string('first_name', 32);
+            $table->string('first_name', 32)->index();
             $table->string('middle_name', 32)->nullable();
-            $table->string('last_name', 32);
+            $table->string('last_name', 32)->index();
 
             $table->date('birthdate');
             $table->string('language', 2)->default('en')->nullable();
