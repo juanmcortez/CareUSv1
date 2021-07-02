@@ -19,16 +19,17 @@ class DatabaseSeeder extends Seeder
         //User::factory()->createUserPersona()->create();
 
         // Temp patients
-        $totalpatients = random_int(10, 150);
+        $totalpatients = random_int(100, 10000);
         $this->command->info("Creating $totalpatients patient.");
         Patient::factory($totalpatients)->createPatientPersona()->create();
 
         // Temp user
         $this->command->info("Creating user.");
         $user = User::factory([
-            'username'      => 'superadmin',
-            'email'         => 'juanm.cortez@gmail.com',
-            'password'      => bcrypt('123456789'),
+            'username'          => 'superadmin',
+            'email'             => 'juanm.cortez@gmail.com',
+            'password'          => bcrypt('123456789'),
+            'email_verified_at' => now(),
         ])->create();
 
         PersonaFactory::new()
