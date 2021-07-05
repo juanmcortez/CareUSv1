@@ -44,6 +44,7 @@ class Persona extends Model
         'created_at',
         'user',
         'patient',
+        'demographic',
         'phone',
         'address',
     ];

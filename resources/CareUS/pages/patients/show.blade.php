@@ -31,9 +31,10 @@
 
     {{-- Page content --}}
     <div class="w-full p-6 md:px-12 text-cemter">
-        {{ $patient }}<br />
-        {{ $patient->persona }}<br />
-        {{ $patient->persona->address }}<br />
+        {{ $patient }}<br /><br />
+        {{ $patient->persona }}<br /><br />
+        {{ $patient->persona->demographic }}<br /><br />
+        {{ $patient->persona->address }}<br /><br />
         {{ $patient->persona->phone }}
     </div>
     {{-- Page content --}}
