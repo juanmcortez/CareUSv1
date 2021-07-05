@@ -2,6 +2,7 @@
 
 namespace App\Models\Dashboard;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -49,6 +50,18 @@ class Stats extends Model
         'patientsevolY' => 'array',
         'patientgender' => 'array',
         'patientsagegY' => 'array',
-        'created_at' => 'datetime:Y-m-d H:i',
+        'updated_at'    => 'datetime:Y-m-d H:i',
     ];
+
+
+    /**
+     * Updated at Accesor
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getUpdatedAtAttribute($value)
+    {
+        return ucfirst(Carbon::parse($value)->translatedFormat(config('app.updateformat')));
+    }
 }

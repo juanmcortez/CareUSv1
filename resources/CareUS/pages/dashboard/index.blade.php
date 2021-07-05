@@ -22,7 +22,7 @@
     <div class="flex flex-col flex-wrap w-full p-6 md:px-12 text-cemter">
 
         <div class="flex flex-row items-center justify-end w-full pr-5 text-xs text-dark-300">
-            {{ __('Last statistics update: :date', [ 'date' => $stats->updated_at->format(config('app.dateformat').' H:i')]) }}
+            {{ __('Last statistics update: :date', [ 'date' => $stats->updated_at]) }}
         </div>
 
         <div class="flex flex-row flex-wrap">
@@ -150,7 +150,7 @@
             noData: {
                 text: '{{ __('No data available.') }}',
             },
-            labels: ['{{ __('Español') }}', '{{ __('French') }}', '{{ __('English') }}'],
+            labels: ['{{ __('Male') }}', '{{ __('Female') }}', '{{ __('Others') }}'],
             series: [{{ implode(', ', $stats->patientgender) }}]
         };
 
