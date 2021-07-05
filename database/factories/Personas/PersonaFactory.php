@@ -32,6 +32,7 @@ class PersonaFactory extends Factory
             'middle_name'   => $this->faker->firstName($gender),
             'last_name'     => $this->faker->lastName,
             'birthdate'     => $this->faker->dateTimeBetween('-95 years', '-1 months')->format(config('app.dateformat')),
+            'gender'        => $gender,
         ];
     }
 

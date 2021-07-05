@@ -41,7 +41,8 @@ class DatabaseSeeder extends Seeder
                 'first_name'    => 'Juan',
                 'middle_name'   => 'Manuel',
                 'last_name'     => 'Cortéz',
-                'birthdate'     => date('Y-m-d', strtotime('1980-04-08'))
+                'birthdate'     => date('Y-m-d', strtotime('1980-04-08')),
+                'gender'        => 'male',
             ]);
     }
 }
