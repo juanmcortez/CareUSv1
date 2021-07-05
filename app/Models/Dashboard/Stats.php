@@ -17,6 +17,7 @@ class Stats extends Model
      */
     protected $fillable = [
         'totalpatients',
+        'patsevolXInit',
         'patientsevolX',
         'patientsevolY',
         'patientgender',
@@ -43,6 +44,7 @@ class Stats extends Model
      */
     protected $casts = [
         'totalpatients' => 'integer',
+        'patsevolXInit' => 'integer',
         'patientsevolX' => 'array',
         'patientsevolY' => 'array',
         'patientgender' => 'array',

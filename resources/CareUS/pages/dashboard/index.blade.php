@@ -61,6 +61,8 @@
             </div>
         </div>
 
+        {{ $stats }}
+
     </div>
     {{-- Page content --}}
 
@@ -110,7 +112,7 @@
                 type: 'bar',
                 name: 'Total Patients',
                 data: [
-                    @php $current = 0; @endphp
+                    @php $current = $stats->patsevolXInit; @endphp
                     @foreach ($stats->patientsevolY as $value)
                     {{ $current += $value }}
                     {{ $loop->last ? '' : ', ' }}
