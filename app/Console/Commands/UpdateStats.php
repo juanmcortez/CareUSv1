@@ -78,9 +78,14 @@ class UpdateStats extends Command
 
         $males          = Persona::where('owner_type', 'patient')->where('gender', 'male')->count();
         $females        = Persona::where('owner_type', 'patient')->where('gender', 'female')->count();
-        $others         = Persona::where('owner_type', 'patient')->whereNotIn('gender', ['male', 'female'])->count();
+        $nonbinary      = Persona::where('owner_type', 'patient')->where('gender', 'nonbinary')->count();
+        $transgender    = Persona::where('owner_type', 'patient')->where('gender', 'transgender')->count();
+        $genderfluid    = Persona::where('owner_type', 'patient')->where('gender', 'genderfluid')->count();
+        $intersex       = Persona::where('owner_type', 'patient')->where('gender', 'intersex')->count();
+        $undisclosed    = Persona::where('owner_type', 'patient')->where('gender', '')->count();
+        $others         = Persona::where('owner_type', 'patient')->whereNotIn('gender', ['male', 'female', 'nonbinary', 'transgender', 'genderfluid', 'intersex'])->count();
 
-        $patientsgender = [$males, $females, $others];
+        $patientsgender = [$males, $females, $nonbinary, $transgender, $genderfluid, $intersex, $undisclosed, $others];
 
         $yearsago10     = Carbon::now()->subYears(10)->format('Y-m-d 00:00:00');
         $yearsago20     = Carbon::parse(Carbon::now()->subYears(10)->format('Y-m-d 23:59:59'))->subYears(10)->format('Y-m-d 00:00:00');

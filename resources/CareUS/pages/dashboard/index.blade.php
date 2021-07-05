@@ -150,7 +150,7 @@
             noData: {
                 text: '{{ __('No data available.') }}',
             },
-            labels: ['{{ __('Male') }}', '{{ __('Female') }}', '{{ __('Others') }}'],
+            labels: ['{{ __('Male') }}', '{{ __('Female') }}', '{{ __('Non-Binary') }}', '{{ __('Transgender') }}', '{{ __('Genderfluid') }}', '{{ __('Intersex') }}', '{{ __('Undisclosed') }}', '{{ __('Others') }}'],
             series: [{{ implode(', ', $stats->patientgender) }}]
         };
 

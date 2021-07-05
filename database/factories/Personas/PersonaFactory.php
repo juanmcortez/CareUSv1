@@ -32,7 +32,7 @@ class PersonaFactory extends Factory
             'middle_name'   => $this->faker->firstName($gender),
             'last_name'     => $this->faker->lastName,
             'birthdate'     => $this->faker->dateTimeBetween('-95 years', '-1 months')->format(config('app.dateformat')),
-            'gender'        => $gender,
+            'gender'        => $this->faker->randomElement(['', 'male', 'female', 'male', 'female', 'male', 'female', 'agender', 'nononforming', 'cisgender', 'cishet', 'transgender', 'genderqueer', 'genderfluid', 'nonbinary', 'intersex']),
         ];
     }
 
