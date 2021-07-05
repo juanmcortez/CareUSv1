@@ -25,6 +25,7 @@ class PatientFactory extends Factory
         return [
             'externalID'                => random_int(1000000000, 9999999999),
             'patient_level_accession'   => $this->faker->randomElement(['', random_int(1000000000, 9999999999)]),
+            'created_at'                => $this->faker->dateTimeBetween('-12 months', '-7 days'),
         ];
     }
 
