@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Dashboard\Stats;
+use Artisan;
 use Illuminate\Http\Request;
 
 class StatsController extends Controller
@@ -18,7 +19,13 @@ class StatsController extends Controller
         $title = __("Dashboard");
         $description = __("Statistics about your practice.");
 
-        return view('pages.dashboard.index', compact('title', 'description'));
+        $stats = Stats::first();
+        if (empty($stats)) {
+            Artisan::call('update:stats');
+            $stats = Stats::first();
+        }
+
+        return view('pages.dashboard.index', compact('title', 'description', 'stats'));
     }
 
     /**

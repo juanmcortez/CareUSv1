@@ -19,8 +19,184 @@
     {{-- Default blocks --}}
 
     {{-- Page content --}}
-    <div class="w-full p-6 md:px-12 text-cemter">
+    <div class="flex flex-col flex-wrap w-full p-6 md:px-12 text-cemter">
+
+        <div class="flex flex-row items-center justify-end w-full pr-5 text-xs text-dark-300">
+            {{ __('Last statistics update: :date', [ 'date' => $stats->updated_at->format(config('app.dateformat').' H:i')]) }}
+        </div>
+
+        <div class="flex flex-row flex-wrap">
+            <div class="flex w-4/12">
+                <div id="patientsevolution" class="flex w-full p-5 m-5 bg-dark-50"></div>
+            </div>
+            <div class="flex w-4/12">
+                <div id="patientsgender" class="flex w-full p-5 m-5 bg-dark-50"></div>
+            </div>
+            <div class="flex w-4/12">
+                <div id="patientsagegroups" class="flex w-full p-5 m-5 bg-dark-50"></div>
+            </div>
+        </div>
+
+        <div class="flex flex-row flex-wrap">
+            <div class="flex w-4/12">
+                <div id="" class="flex w-full p-5 m-5 bg-dark-50"></div>
+            </div>
+            <div class="flex w-4/12">
+                <div id="" class="flex w-full p-5 m-5 bg-dark-50"></div>
+            </div>
+            <div class="flex w-4/12">
+                <div id="" class="flex w-full p-5 m-5 bg-dark-50"></div>
+            </div>
+        </div>
+
+        <div class="flex flex-row flex-wrap">
+            <div class="flex w-4/12">
+                <div id="" class="flex w-full p-5 m-5 bg-dark-50"></div>
+            </div>
+            <div class="flex w-4/12">
+                <div id="" class="flex w-full p-5 m-5 bg-dark-50"></div>
+            </div>
+            <div class="flex w-4/12">
+                <div id="" class="flex w-full p-5 m-5 bg-dark-50"></div>
+            </div>
+        </div>
 
     </div>
     {{-- Page content --}}
+
+    @push('scripts')
+    <script type="text/javascript">
+        // Patients Evolution
+        var patientsevolutionoptions = {
+            chart: {
+                fontFamily: 'Poppins',
+                foreColor: '#293241',
+                toolbar: {
+                    show: false,
+                },
+                animations: {
+                    enabled: false,
+                },
+            },
+            stroke: {
+                curve: 'smooth',
+                width: 3,
+            },
+            tooltip: {
+                enabled: false,
+            },
+            dataLabels: {
+                enabled: true,
+                position: 'top',
+                offsetY: -13,
+                style: {
+                    fontSize: '11px',
+                }
+            },
+            noData: {
+                text: '{{ __('No data available.') }}',
+            },
+            series: [{
+                type: 'bar',
+                name: 'New Patients',
+                data: [
+                    @foreach ($stats->patientsevolY as $value)
+                    {{ $value }}
+                    {{ $loop->last ? '' : ', ' }}
+                    @endforeach
+                ]
+            },
+            {
+                type: 'bar',
+                name: 'Total Patients',
+                data: [
+                    @php $current = 0; @endphp
+                    @foreach ($stats->patientsevolY as $value)
+                    {{ $current += $value }}
+                    {{ $loop->last ? '' : ', ' }}
+                    @endforeach
+                ]
+            }],
+            yaxis: {
+                type: 'numeric',
+            },
+            xaxis: {
+                type: 'datetime',
+                categories: [
+                    @foreach ($stats->patientsevolX as $value)
+                    '{{ $value }}'
+                    {{ $loop->last ? '' : ', ' }}
+                    @endforeach
+                ]
+            }
+        };
+
+        // Patient Genders
+        var patientsgenderoptions = {
+            chart: {
+                fontFamily: 'Poppins',
+                foreColor: '#293241',
+                toolbar: {
+                    show: false,
+                },
+                animations: {
+                    enabled: false,
+                },
+                type:'donut',
+            },
+            tooltip: {
+                enabled: false,
+            },
+            noData: {
+                text: '{{ __('No data available.') }}',
+            },
+            labels: ['{{ __('Español') }}', '{{ __('French') }}', '{{ __('English') }}'],
+            series: [{{ implode(', ', $stats->patientgender) }}]
+        };
+
+        // Patient Age Groups
+        var patientsagegroupsoptions = {
+            chart: {
+                fontFamily: 'Poppins',
+                foreColor: '#293241',
+                toolbar: {
+                    show: false,
+                },
+                animations: {
+                    enabled: false,
+                },
+                type:'bar',
+            },
+            stroke: {
+                curve: 'smooth',
+                width: 3,
+            },
+            tooltip: {
+                enabled: false,
+            },
+            dataLabels: {
+                enabled: true,
+                position: 'top',
+                offsetY: -13,
+                style: {
+                    fontSize: '11px',
+                }
+            },
+            noData: {
+                text: '{{ __('No data available.') }}',
+            },
+            series: [{
+                type: 'bar',
+                name: 'Patients Ages',
+                data: [{{ implode(', ', $stats->patientsagegY) }}]
+            }],
+            yaxis: {
+                type: 'numeric',
+            },
+            xaxis: {
+                categories: ['0-10', '11-20', '21-30','31-40','41-50','51-60','61-70','71-80','81-90','+91']
+            }
+        }
+    </script>
+    @endpush
 </x-careus-layout>
