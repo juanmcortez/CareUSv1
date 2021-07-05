@@ -76,9 +76,9 @@ class UpdateStats extends Command
             Carbon::parse($daysago30)->format('M d, Y'),
         ];
 
-        $males          = Persona::where('owner_type', 'patient')->where('language', 'es')->count();
-        $females        = Persona::where('owner_type', 'patient')->where('language', 'fr')->count();
-        $others         = Persona::where('owner_type', 'patient')->where('language', 'en')->count();
+        $males          = Persona::where('owner_type', 'patient')->where('gender', 'male')->count();
+        $females        = Persona::where('owner_type', 'patient')->where('gender', 'female')->count();
+        $others         = Persona::where('owner_type', 'patient')->whereNotIn('gender', ['male', 'female'])->count();
 
         $patientsgender = [$males, $females, $others];
 

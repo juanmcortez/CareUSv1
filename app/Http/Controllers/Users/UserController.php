@@ -136,6 +136,7 @@ class UserController extends Controller
         $user = User::findOrFail(Auth::user()->id);
         $user->update($data['user']);
         $user->persona->update($data['persona']);
+        $user->persona->demographic->update($data['demographic']);
         $user->persona->address->update($data['address']);
         $user->persona->phone->first()->update($data['phone']);
 
