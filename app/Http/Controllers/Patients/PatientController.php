@@ -23,7 +23,7 @@ class PatientController extends Controller
         $personas = Persona::where('owner_type', 'patient')
             ->orderByRaw('last_name ASC, first_name ASC, middle_name ASC')
             ->with('patient', 'phone')
-            ->paginate(10);
+            ->paginate(15);
 
         return view('pages.patients.index', compact('title', 'description', 'personas'));
     }
