@@ -33,13 +33,14 @@ class DatabaseSeeder extends Seeder
         ])->create();
 
         PersonaFactory::new()
+            ->count(1)
+            ->createAddressPhone(1)
             ->create([
                 'owner_id'      => $user->id,
                 'owner_type'    => 'user',
                 'first_name'    => 'Juan',
                 'middle_name'   => 'Manuel',
                 'last_name'     => 'Cortéz',
-                'language'      => 'es',
                 'birthdate'     => date('Y-m-d', strtotime('1980-04-08'))
             ]);
     }

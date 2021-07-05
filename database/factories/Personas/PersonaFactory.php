@@ -4,6 +4,7 @@ namespace Database\Factories\Personas;
 
 use App\Models\Personas\Persona;
 use App\Models\Users\User;
+use Database\Factories\Personas\DemographicFactory;
 use Database\Factories\Personas\PhoneFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -31,7 +32,6 @@ class PersonaFactory extends Factory
             'middle_name'   => $this->faker->firstName($gender),
             'last_name'     => $this->faker->lastName,
             'birthdate'     => $this->faker->dateTimeBetween('-95 years', '-1 months')->format(config('app.dateformat')),
-            'language'      => $this->faker->randomElement(['en', 'es', 'fr']),
         ];
     }
 
@@ -48,6 +48,8 @@ class PersonaFactory extends Factory
                 AddressFactory::new()->create(['owner_id' => $persona->id, 'owner_type' => 'persona']);
                 // Upto $countPhones phones
                 PhoneFactory::new()->count($countPhones)->create(['owner_id' => $persona->id, 'owner_type' => 'persona']);
+                // Only 1 demographic
+                DemographicFactory::new()->create(['owner_id' => $persona->id, 'owner_type' => 'persona']);
             }
         );
     }

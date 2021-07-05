@@ -19,7 +19,7 @@
     @isset($language)
     <div class="w-3/12 mr-2">
         <x-label for="language" :value="__('Language')" />
-        <x-select id="language" class="block w-full mt-1" name="persona[language]" selected="{{ $language }}"
+        <x-select id="language" class="block w-full mt-1" name="demographic[language]" selected="{{ $language }}"
             :options="$languageOptions" />
     </div>
     @endisset

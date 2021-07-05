@@ -61,7 +61,6 @@ class RegisteredUserController extends Controller
                 'middle_name'   => $request->middle_name,
                 'last_name'     => $request->last_name,
                 'birthdate'     => Carbon::now()->subYears(30)->format(config('app.dbdateformat')),
-                'language'      => config('app.locale'),
             ]);
 
         event(new Registered($user));

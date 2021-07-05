@@ -33,8 +33,9 @@ class UserRequest extends FormRequest
             'persona.birthdate.month'   => 'required|numeric|between:1,12',
             'persona.birthdate.day'     => 'required|numeric|between:1,31',
             'persona.birthdate.year'    => 'required|numeric|between:1900,2100',
-            'persona.language'          => 'nullable|string|max:2',
             'persona.profile_photo'     => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
+
+            'demographic.language'      => 'nullable|string|max:2',
 
             'address.street'            => 'nullable|string|between:2,64',
             'address.street_extended'   => 'nullable|string|between:2,64',

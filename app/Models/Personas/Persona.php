@@ -4,6 +4,7 @@ namespace App\Models\Personas;
 
 use App\Models\Patients\Patient;
 use App\Models\Personas\Address;
+use App\Models\Personas\Demographic;
 use App\Models\Users\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -26,7 +27,6 @@ class Persona extends Model
         'middle_name',
         'last_name',
         'birthdate',
-        'language',
         'profile_photo',
     ];
 
@@ -140,6 +140,19 @@ class Persona extends Model
     public function patient()
     {
         return $this->belongsTo(Patient::class, 'owner_id', 'patID')->withDefault();
+    }
+
+
+    /**
+     * Persona - Demographic model relationship.
+     * This function will retrieve the relationship data.
+     * There can be only one demographic model per persona.
+     *
+     * @return Demographic
+     */
+    public function demographic()
+    {
+        return $this->hasOne(Demographic::class, 'owner_id', 'id')->where('owner_type', 'persona');
     }
 
 

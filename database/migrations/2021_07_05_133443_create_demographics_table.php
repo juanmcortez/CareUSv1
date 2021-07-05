@@ -19,13 +19,13 @@ class CreateDemographicsTable extends Migration
             $table->unsignedBigInteger('owner_id');
             $table->enum('owner_type', ['persona', 'insurance'])->default('persona');
 
-            $table->string('family_size', 16)->nullable();
+            $table->integer('family_size')->nullable();
             $table->string('marital', 32)->nullable();
             $table->string('marital_details', 128)->nullable();
 
-            $table->string('language', 2)->default(config('app.locale'));
-            $table->string('ethnicity', 16)->nullable();
-            $table->string('race', 16)->nullable();
+            $table->string('language', 2)->default(config('app.locale'))->nullable();
+            $table->string('ethnicity', 32)->nullable();
+            $table->string('race', 32)->nullable();
 
             $table->softDeletes();
             $table->timestamps();
