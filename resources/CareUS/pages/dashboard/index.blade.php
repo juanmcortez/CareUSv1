@@ -61,8 +61,6 @@
             </div>
         </div>
 
-        {{ $stats }}
-
     </div>
     {{-- Page content --}}
 
