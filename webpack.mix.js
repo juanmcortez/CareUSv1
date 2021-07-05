@@ -12,7 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/careus.js', 'public/js')
-    .extract(['alpinejs', 'lodash', 'axios', 'jQuery'])
+    .extract(['alpinejs', 'apexcharts', 'lodash', 'axios', 'jQuery'])
     .postCss('resources/css/careus.css', 'public/css')
     .sass('resources/sass/theme.scss', 'public/css')
     .sass('resources/sass/theme_print.scss', 'public/css')

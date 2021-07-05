@@ -30,7 +30,7 @@ class PersonaFactory extends Factory
             'first_name'    => $this->faker->firstName($gender),
             'middle_name'   => $this->faker->firstName($gender),
             'last_name'     => $this->faker->lastName,
-            'birthdate'     => $this->faker->dateTimeBetween('-80 years', '-10 years')->format(config('app.dateformat')),
+            'birthdate'     => $this->faker->dateTimeBetween('-95 years', '-1 months')->format(config('app.dateformat')),
             'language'      => $this->faker->randomElement(['en', 'es', 'fr']),
         ];
     }

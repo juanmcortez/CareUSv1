@@ -15,6 +15,15 @@ class CreateStatsTable extends Migration
     {
         Schema::create('stats', function (Blueprint $table) {
             $table->id();
+
+            $table->integer('totalpatients')->nullable();
+            $table->integer('patsevolXInit')->nullable();
+            $table->string('patientsevolX', 128)->nullable();
+            $table->string('patientsevolY', 128)->nullable();
+            $table->string('patientgender', 128)->nullable();
+            $table->string('patientsagegY', 128)->nullable();
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }
