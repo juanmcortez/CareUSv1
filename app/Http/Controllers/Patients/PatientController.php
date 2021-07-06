@@ -70,9 +70,9 @@ class PatientController extends Controller
             'social_security'   => $patient->persona->social_security,
             'profile_photo'     => $patient->persona->profile_photo,
             'address'           => $patient->persona->address,
-            'phone'             => $patient->persona->phone->first()->formated_phone . ' <em>(' . $patient->persona->phone->first()->phone_type . ')</em>',
+            'phone'             => $patient->persona->phone->first()->formated_phone,
             'subscriber'        => $patient->subscriber->first(),
-            'subscphone'        => $patient->subscriber->first()->phone->first()->formated_phone . ' <em>(' . $patient->subscriber->first()->phone->first()->phone_type . ')</em>',
+            'subscphone'        => $patient->subscriber->first()->phone->first()->formated_phone,
         ]);
 
         return view('pages.patients.show', compact('title', 'description', 'patient_details'));

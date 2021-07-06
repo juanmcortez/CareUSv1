@@ -14,13 +14,19 @@
                 <li>
                     <a href="{{ route('patient.show', ['patient' => $patient->patID]) }}" title="{{ __('Go Back') }}"
                         class="flex items-center justify-center w-10 h-10 ml-4 text-red-100 transition-colors duration-150 ease-in-out bg-red-400 rounded-full shadow cursor-pointer hover:bg-red-100 hover:text-red-400">
-                        <i class="text-sm fas fa-angle-left"></i>
+                        <i class="text-xl fas fa-angle-left"></i>
                     </a>
+                </li>
+                <li>
+                    <div
+                        class="flex items-center justify-center w-10 h-10 ml-4 transition-colors duration-150 ease-in-out rounded-full shadow bg-dark-100 text-dark-200">
+                        <i class="text-sm fas fa-user-edit"></i>
+                    </div>
                 </li>
                 <li class="mr-4">
                     <div
-                        class="flex items-center justify-center w-10 h-10 ml-4 transition-colors duration-150 ease-in-out rounded-full shadow bg-dark-400 text-dark-900">
-                        <i class="text-sm fas fa-user-edit"></i>
+                        class="flex items-center justify-center w-10 h-10 ml-4 transition-colors duration-150 ease-in-out rounded-full shadow bg-dark-100 text-dark-200">
+                        <i class="text-sm fas fa-trash-alt"></i>
                     </div>
                 </li>
                 <li class="mr-4">
@@ -63,8 +69,7 @@
 
                         <div class="w-5/12 pr-2 mt-1 font-semibold text-right">&nbsp;</div>
                         <div class="w-7/12 mt-1">
-                            {!! $patient->subscriber->first()->phone->first()->formated_phone . ' <em>(' .
-                                $patient->subscriber->first()->phone->first()->phone_type . ')</em>' !!}
+                            {{ $patient->subscriber->first()->phone->first()->formated_phone }}
                         </div>
                     </div>
                     <div class="flex flex-row flex-wrap w-full pt-4 mt-4 text-left border-t border-dark-100">
@@ -88,8 +93,7 @@
                     <div class="flex flex-row flex-wrap w-full pt-4 mt-4 text-left">
                         <div class="w-5/12 pr-2 font-semibold text-right">{{ __('Phone') }}</div>
                         <div class="w-7/12">
-                            {!! $patient->persona->phone->first()->formated_phone . ' <em>(' .
-                                $patient->persona->phone->first()->phone_type . ')</em>' !!}
+                            {{ $patient->persona->phone->first()->formated_phone }}
                         </div>
                     </div>
                 </div>
