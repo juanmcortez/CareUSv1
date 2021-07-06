@@ -38,6 +38,10 @@ Route::middleware(['verified', 'auth'])->group(function () {
     Route::prefix('patient')->name('patient.')->group(function () {
         Route::get('list', [PatientController::class, 'index'])->name('list');
         Route::get('{patient}/ledger', [PatientController::class, 'show'])->name('show');
+        Route::get('{patient}/ledger/detail', [PatientController::class, 'detail'])->name('detail');
+        Route::get('{patient}/ledger/edit', [PatientController::class, 'edit'])->name('edit');
+        Route::patch('{patient}/ledger/edit', [PatientController::class, 'update'])->name('update');
+        Route::delete('{patient}/remove', [PatientController::class, 'destroy'])->name('delete');
     });
 
     /* ***** Billing routes ***** */

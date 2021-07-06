@@ -60,7 +60,36 @@ class PatientController extends Controller
         $title = __(":name's Ledger", ["name" => $patient->persona->last_name . ', ' . $patient->persona->first_name]);
         $description = __(":name's Ledger", ["name" => $patient->persona->last_name . ', ' . $patient->persona->first_name]);
 
-        return view('pages.patients.show', compact('title', 'description', 'patient'));
+        $patient_details = collect([
+            'created_at'        => $patient->created_at,
+            'updated_at'        => $patient->persona->updated_at,
+            'formated_name'     => $patient->persona->formated_name,
+            'patID'             => $patient->patID,
+            'externalID'        => $patient->externalID,
+            'birthdate'         => $patient->persona->birthdate,
+            'social_security'   => $patient->persona->social_security,
+            'profile_photo'     => $patient->persona->profile_photo,
+            'address'           => $patient->persona->address,
+            'phone'             => $patient->persona->phone->first()->formated_phone . ' <em>(' . $patient->persona->phone->first()->phone_type . ')</em>',
+            'subscriber'        => $patient->subscriber->first(),
+            'subscphone'        => $patient->subscriber->first()->phone->first()->formated_phone . ' <em>(' . $patient->subscriber->first()->phone->first()->phone_type . ')</em>',
+        ]);
+
+        return view('pages.patients.show', compact('title', 'description', 'patient_details'));
+    }
+
+    /**
+     * Display the detailsof the specified resource.
+     *
+     * @param  \App\Models\Patients\Patient  $patient
+     * @return \Illuminate\Http\Response
+     */
+    public function detail(Patient $patient)
+    {
+        $title = __(":name's Demographic details", ["name" => $patient->persona->last_name . ', ' . $patient->persona->first_name]);
+        $description = __(":name's Demographic details", ["name" => $patient->persona->last_name . ', ' . $patient->persona->first_name]);
+
+        return view('pages.patients.detail', compact('title', 'description', 'patient'));
     }
 
     /**
@@ -71,7 +100,10 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        //
+        $title = __(":name's Demographic edit", ["name" => $patient->persona->last_name . ', ' . $patient->persona->first_name]);
+        $description = __(":name's Demographic edit", ["name" => $patient->persona->last_name . ', ' . $patient->persona->first_name]);
+
+        return view('pages.patients.edit', compact('title', 'description', 'patient'));
     }
 
     /**
@@ -94,6 +126,9 @@ class PatientController extends Controller
      */
     public function destroy(Patient $patient)
     {
-        //
+        $patient->persona->delete();
+        $patient->delete();
+
+        return redirect(route('patient.list'))->with('success', 'Patient successfully deleted.');
     }
 }
