@@ -129,6 +129,6 @@ class PatientController extends Controller
         $patient->persona->delete();
         $patient->delete();
 
-        return redirect(route('patient.list'))->with('success', 'Patient successfully deleted.');
+        return redirect(route('patient.list'))->with('success', __('Patient successfully deleted.'));
     }
 }
