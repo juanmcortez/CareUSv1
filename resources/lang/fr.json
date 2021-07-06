@@ -779,5 +779,6 @@
     "Contacts": "Contacts",
     "Employer": "Employeur",
     "Subscriber": "Abonné",
-    "Patient successfully deleted.": "Patient supprimé avec succès."
+    "Patient successfully deleted.": "Patient supprimé avec succès.",
+    "Delete this Patient": "Supprimer ce patient"
 }
