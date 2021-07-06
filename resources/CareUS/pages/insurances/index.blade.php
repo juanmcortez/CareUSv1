@@ -20,7 +20,24 @@
 
     {{-- Page content --}}
     <div class="w-full p-6 md:px-12 text-cemter">
-
+        <table class="w-full">
+            <tbody>
+                @foreach ($insurances as $insurance)
+                <tr class="text-center">
+                    <td class="text-left">{{ $insurance->name }}</td>
+                    <td>{{ $insurance->contract_effective_date }}</td>
+                    <td>{{ $insurance->payer_id }}</td>
+                    <td>{{ $insurance->phone->formated_phone }}</td>
+                    <td class="text-left">
+                        {{ $insurance->address->street.' '.$insurance->address->street_extended }}
+                    </td>
+                    <td class="text-left">
+                        {{ $insurance->address->city.', '.$insurance->address->state.' '.$insurance->address->zip }}
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
     {{-- Page content --}}
 </x-careus-layout>

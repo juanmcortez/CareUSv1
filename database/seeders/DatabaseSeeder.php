@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Insurances\Company;
 use App\Models\Patients\Patient;
 use App\Models\Users\User;
 use Database\Factories\Personas\PersonaFactory;
@@ -16,12 +17,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        //User::factory()->createUserPersona()->create();
+        $totaldata = 0;
+
+        // Temp insurances
+        $totalinsurances = random_int(5, 95);
+        $this->command->info("Creating $totalinsurances insurance companies.");
+        $totaldata += $totalinsurances;
+
+        Company::factory($totalinsurances)->createAddressPhone()->create();
 
         // Temp patients
         $totalpatients = random_int(100, 1000);
         $totalcontacts = $totalpatients * 3;
-        $totaldata = 0;
         $this->command->info("Creating $totalpatients patient.");
         $totaldata += $totalpatients;
         $this->command->info("Creating $totalcontacts patient's contacts.");

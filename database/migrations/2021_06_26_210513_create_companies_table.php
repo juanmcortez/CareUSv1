@@ -14,7 +14,26 @@ class CreateCompaniesTable extends Migration
     public function up()
     {
         Schema::create('companies', function (Blueprint $table) {
-            $table->id();
+            $table->id('insID');
+
+            $table->boolean('active')->default(true);
+
+            $table->string('name', 128)->index();
+            $table->string('marketing_name', 128)->nullable();
+            $table->string('parent_organization', 128)->nullable();
+            $table->string('typeof_organization', 32)->nullable();
+
+            $table->date('contract_effective_date')->nullable();
+            $table->date('contract_termination_date')->nullable();
+
+            $table->string('payer_type', 32)->nullable();
+            $table->string('payer_id', 16)->nullable();
+            $table->string('eligbility_payer_id', 16)->nullable();
+
+            $table->string('x12_partner', 16)->nullable();
+            $table->string('eligbility_x12_partner', 16)->nullable();
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }
