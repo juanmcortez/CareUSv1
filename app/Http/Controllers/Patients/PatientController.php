@@ -60,22 +60,7 @@ class PatientController extends Controller
         $title = __(":name's Ledger", ["name" => $patient->persona->last_name . ', ' . $patient->persona->first_name]);
         $description = __(":name's Ledger", ["name" => $patient->persona->last_name . ', ' . $patient->persona->first_name]);
 
-        $patient_details = collect([
-            'created_at'        => $patient->created_at,
-            'updated_at'        => $patient->persona->updated_at,
-            'formated_name'     => $patient->persona->formated_name,
-            'patID'             => $patient->patID,
-            'externalID'        => $patient->externalID,
-            'birthdate'         => $patient->persona->birthdate,
-            'social_security'   => $patient->persona->social_security,
-            'profile_photo'     => $patient->persona->profile_photo,
-            'address'           => $patient->persona->address,
-            'phone'             => $patient->persona->phone->first()->formated_phone,
-            'subscriber'        => $patient->subscriber->first(),
-            'subscphone'        => $patient->subscriber->first()->phone->first()->formated_phone,
-        ]);
-
-        return view('pages.patients.show', compact('title', 'description', 'patient_details'));
+        return view('pages.patients.show', compact('title', 'description', 'patient'));
     }
 
     /**
