@@ -53,7 +53,7 @@ class RegisteredUserController extends Controller
 
         $persona = PersonaFactory::new()
             ->count(1)
-            ->createAddressPhone(1)
+            ->createDemographic(true, true, 1)
             ->create([
                 'owner_id'      => $user->id,
                 'owner_type'    => 'user',
