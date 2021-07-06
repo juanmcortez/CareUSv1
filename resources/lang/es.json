@@ -768,5 +768,12 @@
     "Practice list": "Lista de Prácticas",
     "Insurance Companies list": "Lista de Compañías de Seguros",
     "Codes Master list": "Lista Maestra de Códigos",
-    "No data available.": "No hay datos disponibles."
+    "No data available.": "No hay datos disponibles.",
+    "Demographic Details": "Detalles Demográficos",
+    ":name's Demographic Details": "Detalles Demográficos de :name",
+    ":name's Demographic Edit": "Editar Datos Demográficos de :name",
+    "Go Back": "Volver",
+    "Contacts": "Contactos",
+    "Employer": "Empleador",
+    "Subscriber": "Abonado"
 }
