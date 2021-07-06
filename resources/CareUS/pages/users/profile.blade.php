@@ -38,8 +38,8 @@
                 first_name="{{ auth()->user()->persona->first_name }}"
                 middle_name="{{ auth()->user()->persona->middle_name }}" />
 
-            <x-user.doblang language="{{ auth()->user()->persona->language }}" :language_options="$lists['languages']"
-                profile_photo="{{ auth()->user()->persona->profile_photo }}"
+            <x-user.doblang language="{{ auth()->user()->persona->demographic->language }}"
+                :language_options="$lists['languages']" profile_photo="{{ auth()->user()->persona->profile_photo }}"
                 full_name="{{ auth()->user()->persona->formated_name }}"
                 month="{{ date('m', strtotime(auth()->user()->persona->birthdate)) }}" :month_options="$lists['months']"
                 day="{{ date('d', strtotime(auth()->user()->persona->birthdate)) }}" :day_options="$lists['days']"

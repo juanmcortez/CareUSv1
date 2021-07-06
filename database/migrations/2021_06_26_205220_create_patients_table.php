@@ -18,6 +18,7 @@ class CreatePatientsTable extends Migration
 
             $table->string('externalID', 16)->nullable()->index();
             $table->string('patient_level_accession', 16)->nullable();
+            $table->string('patient_email')->index();
 
             $table->softDeletes();
             $table->timestamps();

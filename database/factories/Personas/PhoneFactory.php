@@ -25,11 +25,12 @@ class PhoneFactory extends Factory
         return [
             'owner_id'      => Persona::factory(),
             'owner_type'    => 'persona',
+            'phone_type'    => $this->faker->randomElement(['home', 'cellphone', 'work', 'emergency', 'relative', 'other']),
             'intl_code'     => '1',
             'area_code'     => $this->faker->randomNumber(3, true),
             'prefix'        => $this->faker->randomNumber(3, true),
             'line'          => $this->faker->randomNumber(4, true),
-            'extension'     => $this->faker->randomNumber(2, true),
+            'extension'     => $this->faker->randomElement([null, $this->faker->randomNumber(2, true)]),
         ];
     }
 }

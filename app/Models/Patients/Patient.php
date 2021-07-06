@@ -29,6 +29,7 @@ class Patient extends Model
     protected $fillable = [
         'externalID',
         'patient_level_accession',
+        'patient_email',
     ];
 
 
@@ -41,6 +42,9 @@ class Patient extends Model
         'deleted_at',
         'updated_at',
         'persona',
+        'contact',
+        'employer',
+        'subscriber',
     ];
 
 
@@ -86,5 +90,44 @@ class Patient extends Model
     public function persona()
     {
         return $this->hasOne(Persona::class, 'owner_id', 'patID')->where('owner_type', 'patient');
+    }
+
+
+    /**
+     * Patient - Contact model relationship.
+     * This function will retrieve the relationship data.
+     * There can be many contact models per patient.
+     *
+     * @return Persona
+     */
+    public function contact()
+    {
+        return $this->hasMany(Persona::class, 'owner_id', 'patID')->where('owner_type', 'contact');
+    }
+
+
+    /**
+     * Patient - Employer model relationship.
+     * This function will retrieve the relationship data.
+     * There can be only one employer model per patient.
+     *
+     * @return Persona
+     */
+    public function employer()
+    {
+        return $this->hasOne(Persona::class, 'owner_id', 'patID')->where('owner_type', 'employer');
+    }
+
+
+    /**
+     * Patient - Subscriber model relationship.
+     * This function will retrieve the relationship data.
+     * There can be many subscriber models per patient.
+     *
+     * @return Persona
+     */
+    public function subscriber()
+    {
+        return $this->hasMany(Persona::class, 'owner_id', 'patID')->where('owner_type', 'subscriber');
     }
 }

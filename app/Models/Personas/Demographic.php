@@ -2,11 +2,12 @@
 
 namespace App\Models\Personas;
 
+use App\Models\Personas\Persona;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Phone extends Model
+class Demographic extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -18,12 +19,15 @@ class Phone extends Model
     protected $fillable = [
         'owner_id',
         'owner_type',
-        'phone_type',
-        'intl_code',
-        'area_code',
-        'prefix',
-        'line',
-        'extension',
+        'family_size',
+        'marital',
+        'marital_details',
+        'language',
+        'ethnicity',
+        'race',
+        'driver_license',
+        'company_name',
+        'company_position',
     ];
 
 
@@ -70,24 +74,9 @@ class Phone extends Model
 
 
     /**
-     * Return the formated phone of the persona
-     *
-     * @return string
-     */
-    public function getFormatedPhoneAttribute()
-    {
-        $formated = '+' . $this->intl_code . ' (' . $this->area_code . ') ' . $this->prefix . '-' . $this->line;
-        if (!empty($this->extension)) {
-            $formated .= ' ' . __('Ext.') . ' ' . $this->extension;
-        }
-        return $formated;
-    }
-
-
-    /**
-     * Persona - Phone model relationship.
+     * Persona - Demographic model relationship.
      * This function will retrieve the relationship data.
-     * There can be only one phone model per persona.
+     * There can be only one demographic model per persona.
      *
      * @return Persona
      */

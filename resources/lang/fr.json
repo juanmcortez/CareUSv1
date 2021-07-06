@@ -771,5 +771,14 @@
     "Practice list": "Liste de Pratiques",
     "Insurance Companies list": "Liste des Compagnies d'Assurance",
     "Codes Master list": "Liste Principale des Codes",
-    "No data available.": "Pas de données disponibles."
+    "No data available.": "Pas de données disponibles.",
+    "Demographic Details": "Détails Démographiques",
+    ":name's Demographic Details": "Détails Démographiques de :name",
+    ":name's Demographic Edit": "Modification Démographique de :name",
+    "Go Back": "Retourner",
+    "Contacts": "Contacts",
+    "Employer": "Employeur",
+    "Subscriber": "Abonné",
+    "Patient successfully deleted.": "Patient supprimé avec succès.",
+    "Delete this Patient": "Supprimer ce patient"
 }

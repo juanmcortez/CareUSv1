@@ -19,7 +19,7 @@ class Localization
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()) {
-            session()->put('locale', Auth::user()->persona->language);
+            session()->put('locale', Auth::user()->persona->demographic->language);
             App::setLocale(session()->get('locale'));
         } else {
             if (session()->has('locale')) {

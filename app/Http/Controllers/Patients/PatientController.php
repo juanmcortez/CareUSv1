@@ -64,6 +64,20 @@ class PatientController extends Controller
     }
 
     /**
+     * Display the detailsof the specified resource.
+     *
+     * @param  \App\Models\Patients\Patient  $patient
+     * @return \Illuminate\Http\Response
+     */
+    public function detail(Patient $patient)
+    {
+        $title = __(":name's Demographic details", ["name" => $patient->persona->last_name . ', ' . $patient->persona->first_name]);
+        $description = __(":name's Demographic details", ["name" => $patient->persona->last_name . ', ' . $patient->persona->first_name]);
+
+        return view('pages.patients.detail', compact('title', 'description', 'patient'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Patients\Patient  $patient
@@ -71,7 +85,10 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        //
+        $title = __(":name's Demographic edit", ["name" => $patient->persona->last_name . ', ' . $patient->persona->first_name]);
+        $description = __(":name's Demographic edit", ["name" => $patient->persona->last_name . ', ' . $patient->persona->first_name]);
+
+        return view('pages.patients.edit', compact('title', 'description', 'patient'));
     }
 
     /**
@@ -94,6 +111,9 @@ class PatientController extends Controller
      */
     public function destroy(Patient $patient)
     {
-        //
+        $patient->persona->delete();
+        $patient->delete();
+
+        return redirect(route('patient.list'))->with('success', __('Patient successfully deleted.'));
     }
 }
