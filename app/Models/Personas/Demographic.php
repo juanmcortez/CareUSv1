@@ -25,6 +25,9 @@ class Demographic extends Model
         'language',
         'ethnicity',
         'race',
+        'driver_license',
+        'company_name',
+        'company_position',
     ];
 
 

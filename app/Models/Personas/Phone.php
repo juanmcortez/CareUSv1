@@ -18,6 +18,7 @@ class Phone extends Model
     protected $fillable = [
         'owner_id',
         'owner_type',
+        'phone_type',
         'intl_code',
         'area_code',
         'prefix',

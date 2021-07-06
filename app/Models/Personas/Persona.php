@@ -28,7 +28,11 @@ class Persona extends Model
         'last_name',
         'birthdate',
         'gender',
+        'social_security',
+        'contact_type',
         'profile_photo',
+        'decease_date',
+        'decease_reason',
     ];
 
 
@@ -58,6 +62,7 @@ class Persona extends Model
      */
     protected $dates = [
         'birthdate',
+        'decease_date',
         'updated_at',
     ];
 
@@ -69,6 +74,7 @@ class Persona extends Model
      */
     protected $casts = [
         'birthdate' => 'date:Y-m-d',
+        'decease_date' => 'date:Y-m-d',
         'updated_at' => 'datetime:Y-m-d H:i',
     ];
 
@@ -97,7 +103,7 @@ class Persona extends Model
      */
     public function getUpdatedAtAttribute($value)
     {
-        return ucfirst(Carbon::parse($value)->translatedFormat(config('app.updateformat')));
+        return ($value === null) ? null : ucfirst(Carbon::parse($value)->translatedFormat(config('app.updateformat')));
     }
 
 
@@ -114,7 +120,25 @@ class Persona extends Model
             return $value;
         } else {
             // The formated value needs to be shown in other screens
-            return str_replace('.', '', ucfirst(Carbon::parse($value)->translatedFormat(config('app.dateformat'))));
+            return ($value === null) ? null : str_replace('.', '', ucfirst(Carbon::parse($value)->translatedFormat(config('app.dateformat'))));
+        }
+    }
+
+
+    /**
+     * Birthdate Accesor
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getDeceaseDateAttribute($value)
+    {
+        if ($this->owner_type === 'user') {
+            // If we are seeing the user edit screen show the regular value
+            return $value;
+        } else {
+            // The formated value needs to be shown in other screens
+            return ($value === null) ? null : str_replace('.', '', ucfirst(Carbon::parse($value)->translatedFormat(config('app.dateformat'))));
         }
     }
 
