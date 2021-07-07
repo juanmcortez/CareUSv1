@@ -12,7 +12,7 @@
             <ul
                 class="flex flex-row items-center justify-around w-full text-xs font-medium md:justify-end text-primary-300">
                 {{-- <li>{{ __('Subheader') }}</li> --}}
-                <x-menu.submenu verified="{{ auth()->user()->email_verified_at }}" csv />
+                <x-menu.submenu verified="{{ auth()->user()->email_verified_at }}" :csv="$insurances" />
             </ul>
         </div>
     </x-slot>
@@ -35,9 +35,14 @@
                         {{ $insurance->address->city.', '.$insurance->address->state.' '.$insurance->address->zip }}
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="6">&nbsp;</td>
+                </tr>
                 @endforeach
             </tbody>
         </table>
+
+        {{ $insurances->links() }}
     </div>
     {{-- Page content --}}
 </x-careus-layout>

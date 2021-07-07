@@ -18,7 +18,7 @@ class CompanyController extends Controller
         $title = __("Insurance Companies list");
         $description = __("Control the insurances in your practice.");
 
-        $insurances = Company::where('active', true)->orderBy('name')->get();
+        $insurances = Company::where('active', true)->orderBy('name')->paginate(15);
 
         return view('pages.insurances.index', compact('title', 'description', 'insurances'));
     }
