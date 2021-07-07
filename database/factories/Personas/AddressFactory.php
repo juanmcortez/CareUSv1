@@ -25,7 +25,8 @@ class AddressFactory extends Factory
         return [
             'owner_id'          => Persona::factory(),
             'owner_type'        => 'persona',
-            'street'            => $this->faker->streetName,
+            'street'            => $this->faker->streetAddress,
+            'street_extended'   => $this->faker->randomElement([null, $this->faker->streetSuffix]),
             'city'              => $this->faker->city,
             'state'             => 'NY',
             'zip'               => $this->faker->postcode,

@@ -42,8 +42,8 @@ class CompanyFactory extends Factory
             function (Company $company) {
                 // Add address
                 AddressFactory::new()->create(['owner_id' => $company->insID, 'owner_type' => 'insurance']);
-                // Upto $addPhone phones
-                PhoneFactory::new()->count(1)->create(['owner_id' => $company->insID, 'owner_type' => 'insurance']);
+                // Add phone
+                PhoneFactory::new()->create(['owner_id' => $company->insID, 'owner_type' => 'insurance']);
             }
         );
     }
