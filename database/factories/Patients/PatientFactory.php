@@ -34,44 +34,52 @@ class PatientFactory extends Factory
     /**
      * After creating the patient, create
      * all of the other relationship models
+     *
+     * @param integer $totalinsurances
+     *
      */
-    public function createPatientPersona()
+    public function createPatientPersona($totalinsurances)
     {
         return $this->afterCreating(
-            function (Patient $patient) {
+            function (Patient $patient) use ($totalinsurances) {
                 PersonaFactory::new()
-                    ->count(1)
                     ->createDemographic(true, true, 2)
                     ->create([
                         'owner_id'      => $patient->patID,
                         'owner_type'    => 'patient',
                     ]);
 
-                $contactType = $this->faker->randomElement(['father', 'mother', 'husband', 'spouse', 'son', 'daughter', 'guardian', 'relative', 'other']);
-                PersonaFactory::new()
-                    ->count(3)
-                    ->createDemographic(false, false, 1)
-                    ->create([
-                        'owner_id'      => $patient->patID,
-                        'owner_type'    => 'contact',
-                        'contact_type'  => $contactType,
-                    ]);
+                for ($i = 0; $i <= 2; $i++) {
+                    $rand_typ = $this->faker->randomElement(['father', 'mother', 'husband', 'spouse', 'son', 'daughter', 'guardian', 'relative', 'other']);
+                    PersonaFactory::new()
+                        ->createDemographic(false, false, 1)
+                        ->create([
+                            'owner_id'      => $patient->patID,
+                            'owner_type'    => 'contact',
+                            'contact_type'  => $rand_typ,
+                        ]);
+                }
 
                 PersonaFactory::new()
-                    ->count(1)
                     ->createDemographic(true, true, 1)
                     ->create([
                         'owner_id'      => $patient->patID,
                         'owner_type'    => 'employer',
                     ]);
 
-                PersonaFactory::new()
-                    ->count(3)
-                    ->createDemographic(false, true, 2)
-                    ->create([
-                        'owner_id'      => $patient->patID,
-                        'owner_type'    => 'subscriber',
-                    ]);
+                for ($i = 0; $i <= 2; $i++) {
+                    $rand_lvl = $this->faker->randomElement(['primary', 'secondary', 'tertiary']);
+                    $rand_ins = $this->faker->numberBetween(1, $totalinsurances);
+                    PersonaFactory::new()
+                        ->count(1)
+                        ->createDemographic(false, true, 2)
+                        ->create([
+                            'owner_id'          => $patient->patID,
+                            'owner_type'        => 'subscriber',
+                            'subscriber_level'  => $rand_lvl,
+                            'subscriber_insID'  => $rand_ins,
+                        ]);
+                }
             }
         );
     }

@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         $this->command->info("Creating $totalcontacts patient's subscriber.");
         $totaldata += $totalcontacts;
 
-        Patient::factory($totalpatients)->createPatientPersona()->create();
+        Patient::factory($totalpatients)->createPatientPersona($totalinsurances)->create();
 
         // Temp user
         $this->command->info("Creating user.");

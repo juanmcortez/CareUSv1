@@ -73,6 +73,9 @@
                     <h2 class="mb-5 text-xl font-semibold text-dark-300">{{ __('Subscriber') }}</h2>
                     <hr class="my-5 border-dark-200" />
                     @foreach ($patient->subscriber as $subscriber )
+                    {{ $subscriber->insurance }}<br /><br />
+                    {{ $subscriber->insurance->address }}<br /><br />
+                    {{ $subscriber->insurance->phone }}<br /><br />
                     {{ $subscriber }}<br /><br />
                     {{ $subscriber->address }}<br /><br />
                     {{ $subscriber->phone->first() }}

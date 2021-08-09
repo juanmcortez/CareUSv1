@@ -2,6 +2,7 @@
 
 namespace App\Models\Personas;
 
+use App\Models\Insurances\Company;
 use App\Models\Patients\Patient;
 use App\Models\Personas\Address;
 use App\Models\Personas\Demographic;
@@ -30,6 +31,8 @@ class Persona extends Model
         'gender',
         'social_security',
         'contact_type',
+        'subscriber_level',
+        'subscriber_insID',
         'profile_photo',
         'decease_date',
         'decease_reason',
@@ -52,6 +55,7 @@ class Persona extends Model
         'demographic',
         'phone',
         'address',
+        'insurance',
     ];
 
 
@@ -104,6 +108,17 @@ class Persona extends Model
     public function getUpdatedAtAttribute($value)
     {
         return ($value === null) ? null : ucfirst(Carbon::parse($value)->translatedFormat(config('app.updateformat')));
+    }
+
+
+    /**
+     * Return the curren age of the persona
+     *
+     * @return int
+     */
+    public function getCurrentAgeAttribute()
+    {
+        return __(':AGE yrs.', ['AGE' => Carbon::parse($this->birthdate)->diff(Carbon::now())->format('%y')]);
     }
 
 
@@ -205,5 +220,18 @@ class Persona extends Model
     public function phone()
     {
         return $this->hasMany(Phone::class, 'owner_id', 'id')->where('owner_type', 'persona');
+    }
+
+
+    /**
+     * Insurance - Subscriber
+     * This function will retrieve the relationship data.
+     * There can be one insurance models per subscriber.
+     *
+     * @return Company
+     */
+    public function insurance()
+    {
+        return $this->hasOne(Company::class, 'insID', 'subscriber_insID')->where('active', true);
     }
 }

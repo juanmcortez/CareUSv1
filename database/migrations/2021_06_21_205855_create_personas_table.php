@@ -30,7 +30,11 @@ class CreatePersonasTable extends Migration
             $table->date('decease_date')->nullable();
             $table->longText('decease_reason')->nullable();
 
+            // Special fields used by types of patient relationships
             $table->enum('contact_type', ['father', 'mother', 'husband', 'spouse', 'son', 'daughter', 'guardian', 'relative', 'other'])->nullable();
+            $table->enum('subscriber_level', ['primary', 'secondary', 'tertiary'])->nullable();
+            $table->unsignedBigInteger('subscriber_insID')->nullable();
+            // Special fields used by types of patient relationships
 
             $table->longText('profile_photo')->nullable();
 

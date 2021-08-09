@@ -60,12 +60,13 @@ class PersonaFactory extends Factory
                     // Add demographic
                     $company_name       = ($persona->owner_type == 'employer') ? $this->faker->company : null;
                     $company_position   = ($persona->owner_type == 'employer') ? $this->faker->jobTitle : null;
-                    DemographicFactory::new()->create([
-                        'owner_id' => $persona->id,
-                        'owner_type' => 'persona',
-                        'company_name' => $company_name,
-                        'company_position' => $company_position,
-                    ]);
+                    DemographicFactory::new()
+                        ->create([
+                            'owner_id' => $persona->id,
+                            'owner_type' => 'persona',
+                            'company_name' => $company_name,
+                            'company_position' => $company_position,
+                        ]);
                 }
                 if ($addAddr) {
                     // Add address
@@ -73,7 +74,10 @@ class PersonaFactory extends Factory
                 }
                 if ($addPhone) {
                     // Upto $addPhone phones
-                    PhoneFactory::new()->count($addPhone)->create(['owner_id' => $persona->id, 'owner_type' => 'persona']);
+                    for ($i = 1; $i <= $addPhone; $i++) {
+                        $phone_type = $this->faker->randomElement(['home', 'cellphone', 'work', 'emergency', 'relative', 'other']);
+                        PhoneFactory::new()->create(['owner_id' => $persona->id, 'owner_type' => 'persona', 'phone_type' => $phone_type]);
+                    }
                 }
             }
         );
